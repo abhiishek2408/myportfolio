@@ -1,0 +1,135 @@
+/* Projects Page Container */
+.projects-page {
+  padding: 60px 24px;
+  background: linear-gradient(to bottom, #291b2c, #291b2c); /* Dark solid background */
+}
+
+/* Title */
+.projects-title {
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+  color: #f3f4f6;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+/* Title Underline */
+.projects-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #f59e0b; /* Accent line */
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Project Card */
+.project-card-large {
+  background: #3a2a3e; /* Card color */
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  margin-bottom: 32px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-left 0.4s ease;
+  border-left: 8px solid #f59e0b;
+  display: flex;
+  flex-direction: column;
+  color: #f3f4f6;
+}
+
+/* Hover Effects */
+.project-card-large:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  border-left: 16px solid #d97706;
+  filter: brightness(1.05);
+}
+
+/* Project Image */
+.project-image {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Project Details */
+.project-details {
+  padding: 28px 32px;
+}
+
+/* Project Title */
+.project-details h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #f9fafb;
+}
+
+/* Tech Badges */
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.badge {
+  background: #f59e0b;
+  color: #1f2937;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 13px;
+}
+
+/* Description */
+.project-details p {
+  font-size: 15px;
+  color: #d1d5db;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* Project Links */
+.project-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Link with icon */
+.project-icon-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f59e0b;
+  color: #1f2937;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Icon size inside links */
+.project-icon-link .icon {
+  font-size: 18px;
+}
+
+/* Hover Effect for links */
+.project-icon-link:hover {
+  background-color: #d97706;
+  transform: scale(1.05);
+}

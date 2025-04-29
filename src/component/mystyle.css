@@ -1,0 +1,42 @@
+/* Base styles for the body */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition between themes */
+  }
+  
+  /* Light Theme */
+  .light-theme {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  /* Dark Theme */
+  .dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  /* Styling for the button */
+  button {
+    padding: 10px 20px;
+    
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Button style for light theme */
+  .light-theme button {
+    background-color: #f0f0f0;
+    color: #000000;
+  }
+  
+  /* Button style for dark theme */
+  .dark-theme button {
+    background-color: #333333;
+    color: #ffffff;
+  }
+  

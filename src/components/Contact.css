@@ -1,0 +1,102 @@
+/* Contact Page Container */
+.page {
+    padding: 60px 24px;
+    background: linear-gradient(to bottom, #291b2c, #291b2c);
+    color: #f3f4f6;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  
+  /* Title Underline */
+  h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #f59e0b; /* Accent line */
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+  
+  /* Contact Form Styling */
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #3a2a3e; /* Card background */
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #f3f4f6;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    background-color: #291b2c; /* Dark background for input fields */
+    color: #f3f4f6;
+    border: 1px solid #f59e0b; /* Accent border */
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #d1d5db; /* Light placeholder text */
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #f59e0b; /* Accent color on focus */
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.4); /* Focus shadow */
+  }
+  
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  /* Submit Button Styling */
+  .contact-form button {
+    background-color: #f59e0b; /* Button background */
+    color: #1f2937;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 16px;
+  }
+  
+  .contact-form button:hover {
+    background-color: #d97706;
+    transform: scale(1.05);
+  }
+  
+  .contact-form button:focus {
+    outline: none;
+  }
+  
+
+  /* Success message styling */
+.success-message {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #10b981; /* Green color for success */
+    font-weight: 600;
+    text-align: center;
+  }
+  

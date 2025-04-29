@@ -1,0 +1,326 @@
+/* Importing Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+
+
+
+
+ .home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 3rem;
+  
+  height: 100vh;
+
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  position: relative;
+} 
+
+
+
+
+
+/* Profile Picture Section */
+.home-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-pic {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #3f51b5;
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05) rotate(1deg);
+}
+
+/* Content Section */
+.home-right {
+  flex: 2;
+  max-width: 460px;
+  text-align: center;
+  padding: .3rem;
+  margin-right: 10%;
+  border-radius: 20px;
+  backdrop-filter: blur(10px); /* Optional: adds a frosted glass effect */
+}
+
+.name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.1rem;
+  background: linear-gradient(90deg, #3f51b5, #ff69b4, #ff007f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.5s ease;
+  background-size: 200%;
+  background-position: left;
+}
+
+.name:hover {
+  background-position: right;
+}
+
+
+
+.typewriter {
+  font-size: 1.6rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #3f51b5, #ff01b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 6px rgba(63, 81, 181, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 0rem;
+  border-right: 2px solid #3f51b5;
+  animation: typing 4s steps(30, end), blinkCaret 0.75s step-end infinite;
+}
+
+.cursor {
+  animation: blinkCaret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkCaret {
+  50% { border-color: transparent; }
+}
+
+/* Bio */
+.bio {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+/* Skills */
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #3f51b5;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 2px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  box-shadow: 0 8px 20px rgba(63, 81, 181, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+/* Gradient border */
+.skill-tag::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #3f51b5, #ff4081);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+/* Hover effect */
+.skill-tag:hover {
+  transform: translateY(-3px) scale(1.07);
+  box-shadow: 0 12px 24px rgba(255, 64, 129, 0.25);
+  color: #ff4081;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Icon enhancements */
+.skill-tag .icon {
+  font-size: 1.3rem;
+  color: inherit;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.skill-tag:hover .icon {
+  transform: rotate(8deg) scale(1.25);
+  color: #ff4081;
+}
+
+
+
+.skill-tag:hover {
+  color: #ff4081;
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  background-color: #2c2c2c;
+  border-color: #ff4081;
+}
+
+
+
+/* Contact */
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-icons a {
+  position: relative;
+  font-size: 1.3rem;
+  color: #3f51b5;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.6rem;
+  border-radius: 50%;
+  backdrop-filter: blur(8px);
+  border: 2px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  box-shadow: 0 8px 20px rgba(63, 81, 181, 0.1);
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+
+/* Gradient border ring */
+.contact-icons a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, #3f51b5, #ff4081);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+/* 🔥 Hover effects */
+.contact-icons a:hover {
+  color: #ff4081;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.25) rotate(10deg);
+  box-shadow: 0 12px 28px rgba(255, 64, 129, 0.3);
+}
+
+/* Animations */
+.animated-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .profile-pic {
+    width: 180px;
+    height: 180px;
+  }
+
+  .typewriter {
+    font-size: 1.4rem;
+  }
+
+  .home-right {
+    padding: 1.5rem;
+  }
+}
+
+
+
+/* Dark Mode Styles */
+
+
+
+
+
+
+body.dark .bio {
+  color: #ddd; /* Light bio text in dark mode */
+}
+
+
+
+
+
+
+/* Styling for smaller buttons */
+.buttons .btn {
+  font-size: 0.9rem;  /* Smaller font size */
+  padding: 0.6rem 1.5rem;  /* Reduced padding */
+  border-radius: 25px;  /* Slightly smaller border-radius */
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Download CV Button */
+.btn-download {
+  background: linear-gradient(90deg, #3f51b5, #ff69b4, #ff007f);
+  color: white;
+  border-radius: 25px;
+  position: relative;
+}
+
+.btn-download:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 18px rgba(63, 81, 181, 0.3);
+  background: linear-gradient(90deg, #ff007f, #ff69b4, #3f51b5);
+  color: white;
+}
+
+/* Hire Me Button */
+.btn-hire {
+  background: linear-gradient(90deg, #3f51b5, #ff69b4, #ff007f);
+  color: white;
+  border-radius: 25px;
+  position: relative;
+}
+
+.btn-hire:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 18px rgba(63, 81, 181, 0.3);
+  background: linear-gradient(90deg, #ff007f, #ff69b4, #3f51b5);
+  color: white;
+}
+
