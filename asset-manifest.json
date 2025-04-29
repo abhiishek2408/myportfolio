@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/myporfolio/static/css/main.08bc78eb.css",
+    "main.js": "/myporfolio/static/js/main.77d7441f.js",
+    "static/media/NewsWeb.png": "/myporfolio/static/media/NewsWeb.10e82bb9c1e183f97b0e.png",
+    "static/media/portfolioImg.png": "/myporfolio/static/media/portfolioImg.2cd9540671b151f98cef.png",
+    "static/media/RestroWeb.jpg": "/myporfolio/static/media/RestroWeb.541c93e0f34b75892c08.jpg",
+    "index.html": "/myporfolio/index.html",
+    "main.08bc78eb.css.map": "/myporfolio/static/css/main.08bc78eb.css.map",
+    "main.77d7441f.js.map": "/myporfolio/static/js/main.77d7441f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.08bc78eb.css",
+    "static/js/main.77d7441f.js"
+  ]
+}
