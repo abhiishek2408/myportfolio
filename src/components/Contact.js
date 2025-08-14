@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
-import { FaPaperPlane } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+
+// SVG icon for the Send Message button, replacing FaPaperPlane
+const PAPER_PLANE_ICON = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-5 w-5"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+  >
+    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+  </svg>
+);
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -8,6 +20,22 @@ const Contact = () => {
     email: '',
     message: ''
   });
+
+  // Animation variants for the section and form
+  const sectionVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  const formVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, delay: 0.3, ease: "easeOut" } },
+  };
+
+  const successVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +47,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form Data Submitted:", formData);
     setIsSubmitted(true);
 
     // Reset form fields
@@ -33,16 +62,32 @@ const Contact = () => {
   };
 
   return (
-    <div className="mt-16 mx-4 md:mx-10 lg:mx-20 font-lato">
-      <h4 className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 bg-clip-text text-transparent tracking-wide relative pb-2">
+    <div className="min-h-screen bg-[#2d1333] text-[#e0e0e0] font-inter pt-2 md:pt-16 pb-8 overflow-hidden">
+      <motion.h4
+        className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] to-[#a855f7] tracking-wide relative pb-2"
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+      >
         Get in Touch
-        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 rounded-full"></span>
-      </h4>
-      <div className="max-w-xl mx-auto p-8 mt-8 bg-[#2a1b2d] rounded-2xl shadow-2xl">
+        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-[#6b21a8] to-[#a855f7] rounded-full"></span>
+      </motion.h4>
+      
+      <motion.div
+        className="max-w-3xl mx-auto p-8 mt-8 bg-[#3a2a3e] rounded-2xl shadow-2xl transition-all duration-300 hover:scale-[1.01] hover:shadow-xl"
+        variants={formVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {isSubmitted && (
-          <p className="text-center text-green-400 font-semibold mb-4 animate-fade-in">
+          <motion.p
+            className="text-center text-[#10b981] font-semibold mb-4"
+            variants={successVariants}
+            initial="hidden"
+            animate="visible"
+          >
             Message Sent Successfully!
-          </p>
+          </motion.p>
         )}
         <form className="space-y-6" onSubmit={handleSubmit}>
           <input
@@ -52,7 +97,7 @@ const Contact = () => {
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-4 bg-[#3a2a3e] rounded-lg border border-gray-600 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            className="w-full p-4 bg-[#2d1333] rounded-lg border border-gray-600 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a855f7]"
           />
           <input
             type="email"
@@ -61,7 +106,7 @@ const Contact = () => {
             required
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-4 bg-[#3a2a3e] rounded-lg border border-gray-600 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            className="w-full p-4 bg-[#2d1333] rounded-lg border border-gray-600 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a855f7]"
           />
           <textarea
             name="message"
@@ -70,16 +115,16 @@ const Contact = () => {
             rows="5"
             value={formData.message}
             onChange={handleChange}
-            className="w-full p-4 bg-[#3a2a3e] rounded-lg border border-gray-600 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 resize-none"
+            className="w-full p-4 bg-[#2d1333] rounded-lg border border-gray-600 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a855f7] resize-none"
           ></textarea>
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-pink-600 text-white font-bold rounded-lg shadow-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-blu-500 focus:ring-offset-2 transition-colors duration-200"
+            className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#a855f7] text-white font-bold rounded-lg shadow-md hover:bg-[#8b5cf6] focus:outline-none focus:ring-2 focus:ring-[#a855f7] focus:ring-offset-2 transition-colors duration-200"
           >
-            <FaPaperPlane /> Send Message
+            {PAPER_PLANE_ICON} Send Message
           </button>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 };
