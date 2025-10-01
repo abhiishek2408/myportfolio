@@ -50,8 +50,8 @@ const projects = [
     goal: "To build a robust and scalable full-stack application that handles complex business logic and provides a seamless user experience. Focused on mastering server-side rendering and database design.",
     techStack: ["React js", "PHP", "MySQL", "Bootstrap"],
     image: PROJECTS_IMAGES.restaurant,
-    github: "https://github.com/abhiishek2408/React-Restaurant-Website", // Placeholder link
-    live: "https://github.com/abhiishek2408/React-Restaurant-Website", // Placeholder link
+    github: "https://github.com/abhiishek2408/Restaurant-Management-System-MERN-Stack", // Placeholder link
+    live: "https://restaurant-management-system-mern-s.vercel.app/user", // Placeholder link
   },
   {
     title: "Digital News Platform",
@@ -61,7 +61,7 @@ const projects = [
     techStack: ["React.js", "Node.js", "Express.js", "MongoDB"],
     image: PROJECTS_IMAGES.news,
     github: "https://github.com/abhiishek2408/online-news-platform", // Placeholder link
-    live: "https://vercel.com/abhishek-yadavs-projects-9805436e/online-news-platform", // Placeholder link
+    live: "https://online-news-platform.vercel.app/user/dashboard", // Placeholder link
   },
   {
     title: "Puzzle Mobile App",
