@@ -56,7 +56,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#2d1333] text-[#e0e0e0] font-inter pt-2 md:pt-16 pb-8 overflow-hidden">
+    <div className="min-h-screen bg-[#2d1333] text-[#e0e0e0] font-inter pt-2 md:pt-16 pb-8 px-4 overflow-hidden">
       <motion.h4
         className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] to-[#a855f7] tracking-wide relative pb-2"
         variants={sectionTitleVariants}
@@ -66,8 +66,12 @@ const Blog = () => {
         Blog
         <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-[#6b21a8] to-[#a855f7] rounded-full"></span>
       </motion.h4>
+      
+      {/*
+        FIX: Switched from complex flex layout to simple grid layout for better control and less complex width calculations.
+      */}
       <motion.div
-        className="flex flex-col md:flex-row flex-wrap justify-center gap-8 mt-8 mx-4"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 max-w-7xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -78,15 +82,19 @@ const Blog = () => {
             href={blog.link} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="block w-full md:w-[calc(33.333%-1.5rem)] relative bg-[#3a2a3e] rounded-2xl shadow-xl p-6 border border-transparent transition-all duration-300 transform hover:scale-[1.03] group hover:border-[#a855f7]"
+            // Removed specific `w-[calc(...)]` for simpler grid behavior
+            className="block h-full relative bg-[#3a2a3e] rounded-2xl shadow-xl p-6 border border-transparent transition-all duration-300 transform hover:scale-[1.03] group hover:border-[#a855f7] flex flex-col justify-between"
             variants={itemVariants}
           >
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-bold text-gray-50 group-hover:text-[#a855f7] transition-colors">{blog.title}</h3>
-              <span className="text-sm text-gray-400 whitespace-nowrap">{blog.date}</span>
+            <div>
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-xl font-bold text-gray-50 group-hover:text-[#a855f7] transition-colors">{blog.title}</h3>
+                <span className="text-sm text-gray-400 whitespace-nowrap ml-4">{blog.date}</span>
+              </div>
+              <p className="text-sm text-gray-300 leading-relaxed mb-4">{blog.description}</p>
             </div>
-            <p className="text-sm text-gray-300 leading-relaxed mb-4">{blog.description}</p>
-            <span className="text-[#a855f7] font-semibold flex items-center gap-1 transition-transform group-hover:translate-x-1">
+            {/* FIX: Ensure the "Read More" link stays at the bottom and the arrow is clearly visible */}
+            <span className="text-[#a855f7] font-semibold flex items-center gap-1 transition-transform group-hover:translate-x-1 mt-auto">
               Read More &rarr;
             </span>
           </motion.a>
