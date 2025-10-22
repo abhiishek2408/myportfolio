@@ -205,7 +205,6 @@
 
 
 
-
 import React from "react";
 import { motion } from "framer-motion";
 import newsWeb from "../image/NewsWeb.png";
@@ -241,9 +240,6 @@ const LIVE_ICON = (
 const projects = [
   {
     title: "Restaurant Management System",
-    description:
-      "A comprehensive web application to streamline restaurant operations, including order tracking, menu management, billing, and reservations. This system provides an intuitive interface for staff and administrators to enhance efficiency and customer service.",
-    goal: "To build a robust and scalable full-stack application that handles complex business logic and provides a seamless user experience. Focused on mastering server-side rendering and database design.",
     techStack: ["React js", "PHP", "MySQL", "Bootstrap"],
     image: PROJECTS_IMAGES.restaurant,
     github: "https://github.com/abhiishek2408/Restaurant-Management-System-MERN-Stack",
@@ -251,9 +247,6 @@ const projects = [
   },
   {
     title: "Digital News Platform",
-    description:
-      "A dynamic news platform where users can read, comment on, and share articles. The application includes user authentication, article categorization, advanced search functionality, and a robust admin panel for content management.",
-    goal: "To develop a high-performance content-driven platform using the MERN stack. The objective was to implement secure user authentication, create RESTful APIs, and optimize the database for fast content retrieval.",
     techStack: ["React.js", "Node.js", "Express.js", "MongoDB"],
     image: PROJECTS_IMAGES.news,
     github: "https://github.com/abhiishek2408/online-news-platform",
@@ -261,9 +254,6 @@ const projects = [
   },
   {
     title: "Puzzle Mobile App",
-    description:
-      "A challenging and interactive mobile puzzle game designed for logical problem-solving. This cross-platform application allows users to track high scores, and create and share custom puzzles.",
-    goal: "To gain hands-on experience with mobile application development using React Native and to build a backend that manages user data and game state efficiently. The focus was on state management and API integration in a mobile context.",
     techStack: ["React Native", "MongoDB", "Express.js", "Node.js"],
     image: PROJECTS_IMAGES.puzzle,
     github: "https://github.com/abhiishek2408/EduzzleApp-React-Native",
@@ -271,9 +261,6 @@ const projects = [
   },
   {
     title: "Library Management System",
-    description:
-      "A complete solution for managing library operations, including book cataloging, member registration, borrowing, and returns. The system features a secure and scalable backend with an intuitive admin dashboard for inventory management and reporting.",
-    goal: "To master the Laravel framework by building a secure, full-featured web application. The goal was to understand MVC architecture, Eloquent ORM, and advanced database relationships within a large-scale project.",
     techStack: ["Laravel", "PHP", "MySQL", "Tailwind CSS"],
     image: PROJECTS_IMAGES.library,
     github: "https://github.com/abhiishek2408/Library-management-system",
@@ -323,28 +310,20 @@ const Projects = () => {
       >
         {rows.map((rowProjects, rowIndex) => (
           <div key={rowIndex} className="relative md:flex md:items-center md:justify-between gap-8">
-            {/* Timeline line & circle for desktop */}
             {rowProjects.length === 2 && (
-  <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex-col items-center h-full">
-    
-    {/* Top Line */}
-    <div className="w-[3px] bg-gradient-to-b from-[#6b21a8] via-[#9333ea] to-[#a855f7] h-1/2 
-                    shadow-[0_0_10px_rgba(168,85,247,0.7)] animate-pulse"></div>
-    
-    {/* Connector Circle */}
-    <div className="relative flex items-center justify-center">
-      <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#9333ea] to-[#a855f7] 
-                      shadow-lg shadow-purple-500/50 animate-ping absolute opacity-70"></div>
-      <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[#6b21a8] to-[#a855f7] 
-                      border-2 border-white shadow-md"></div>
-    </div>
-    
-    {/* Bottom Line */}
-    <div className="w-[3px] bg-gradient-to-b from-[#a855f7] via-[#9333ea] to-[#6b21a8] h-1/2 
-                    shadow-[0_0_10px_rgba(168,85,247,0.7)] animate-pulse"></div>
-  </div>
-)}
-
+              <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex-col items-center h-full">
+                <div className="w-[3px] bg-gradient-to-b from-[#6b21a8] via-[#9333ea] to-[#a855f7] h-1/2 
+                                shadow-[0_0_10px_rgba(168,85,247,0.7)] animate-pulse"></div>
+                <div className="relative flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#9333ea] to-[#a855f7] 
+                                  shadow-lg shadow-purple-500/50 animate-ping absolute opacity-70"></div>
+                  <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[#6b21a8] to-[#a855f7] 
+                                  border-2 border-white shadow-md"></div>
+                </div>
+                <div className="w-[3px] bg-gradient-to-b from-[#a855f7] via-[#9333ea] to-[#6b21a8] h-1/2 
+                                shadow-[0_0_10px_rgba(168,85,247,0.7)] animate-pulse"></div>
+              </div>
+            )}
 
             {rowProjects.map((project, index) => (
               <motion.div
@@ -370,10 +349,6 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                <p className="text-sm text-gray-300 leading-relaxed mb-4">{project.description}</p>
-                <p className="text-sm text-gray-400 leading-relaxed italic border-l-2 border-gray-500 pl-2 mb-4">
-                  <span className="font-bold text-gray-200">Goal:</span> {project.goal}
-                </p>
                 <div className="flex gap-4">
                   <a
                     href={project.github}

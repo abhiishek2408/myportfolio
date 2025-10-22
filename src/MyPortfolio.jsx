@@ -6,6 +6,7 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Blog from './components/Blog';
+import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -18,6 +19,7 @@ function MyPortfolio() {
       <section id="projects"><Projects /></section>
       <section id="contact"><Contact /></section>
       <section id="blog"><Blog /></section>
+      <section id="footer"><Footer /></section>
     </>
   );
 }

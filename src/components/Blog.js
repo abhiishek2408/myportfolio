@@ -56,7 +56,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#2d1333] text-[#e0e0e0] font-inter pt-2 md:pt-16 pb-8 px-4 overflow-hidden">
+    <div className="min-h-screen bg-[#2d1333] text-[#e0e0e0] font-inter pt-2 md:pt-16 px-4 overflow-hidden">
       <motion.h4
         className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] to-[#a855f7] tracking-wide relative pb-2"
         variants={sectionTitleVariants}
