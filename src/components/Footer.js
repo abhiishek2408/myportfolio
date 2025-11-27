@@ -18,25 +18,25 @@ const Footer = () => {
 
         {/* Center: Social Links */}
         <div className="flex gap-6 text-2xl text-[#a855f7]">
-          <a href="https://github.com/abhiishek2408" target="_blank" rel="noopener noreferrer" className="hover:text-[#6b21a8] transition-colors">
+          <a href="https://github.com/abhiishek2408" target="_blank" rel="noopener noreferrer" className="hover:text-[#6b21a8] transition-colors no-underline">
             <FaGithub />
           </a>
-          <a href="https://linkedin.com/in/abhishek" target="_blank" rel="noopener noreferrer" className="hover:text-[#6b21a8] transition-colors">
+          <a href="https://linkedin.com/in/abhishek" target="_blank" rel="noopener noreferrer" className="hover:text-[#6b21a8] transition-colors no-underline">
             <FaLinkedin />
           </a>
-          <a href="https://twitter.com/abhishek" target="_blank" rel="noopener noreferrer" className="hover:text-[#6b21a8] transition-colors">
+          <a href="https://twitter.com/abhishek" target="_blank" rel="noopener noreferrer" className="hover:text-[#6b21a8] transition-colors no-underline">
             <FaTwitter />
           </a>
-          <a href="mailto:abhishek@example.com" className="hover:text-[#6b21a8] transition-colors">
+          <a href="mailto:abhishek@example.com" className="hover:text-[#6b21a8] transition-colors no-underline">
             <FaEnvelope />
           </a>
         </div>
 
         {/* Right: Quick Links */}
         <div className="flex flex-col gap-2 text-center md:text-right text-gray-300 text-sm md:text-base">
-          <a href="#projects" className="hover:text-[#a855f7] transition-colors">Projects</a>
-          <a href="#contact" className="hover:text-[#a855f7] transition-colors">Contact</a>
-          <a href="#about" className="hover:text-[#a855f7] transition-colors">About Me</a>
+          <a href="#projects" className="hover:text-[#a855f7] transition-colors no-underline">Projects</a>
+          <a href="#contact" className="hover:text-[#a855f7] transition-colors no-underline">Contact</a>
+          <a href="#about" className="hover:text-[#a855f7] transition-colors no-underline">About Me</a>
         </div>
       </div>
 

@@ -56,7 +56,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#2d1333] text-[#e0e0e0] font-inter pt-2 md:pt-16 px-4 overflow-hidden">
+    <div className="min-h-screen bg-[#2d1333] text-[#e0e0e0] font-inter pt-2 md:pt-16 pb-8 overflow-hidden">
       <motion.h4
         className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] to-[#a855f7] tracking-wide relative pb-2"
         variants={sectionTitleVariants}
@@ -71,32 +71,40 @@ const Blog = () => {
         FIX: Switched from complex flex layout to simple grid layout for better control and less complex width calculations.
       */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 max-w-7xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12 max-w-[1200px] mx-auto px-4"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {blogs.map((blog, index) => (
-          <motion.a 
-            key={index} 
-            href={blog.link} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            // Removed specific `w-[calc(...)]` for simpler grid behavior
-            className="block h-full relative bg-[#3a2a3e] rounded-2xl shadow-xl p-6 border border-transparent transition-all duration-300 transform hover:scale-[1.03] group hover:border-[#a855f7] flex flex-col justify-between"
+          <motion.a
+            key={index}
+            href={blog.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block h-full relative rounded-2xl p-0 overflow-hidden group shadow-2xl bg-[rgba(58,42,62,0.85)] backdrop-blur-md transition-all duration-300 hover:scale-[1.04] hover:shadow-purple-500/30 flex flex-col justify-between no-underline"
             variants={itemVariants}
           >
-            <div>
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-bold text-gray-50 group-hover:text-[#a855f7] transition-colors">{blog.title}</h3>
-                <span className="text-sm text-gray-400 whitespace-nowrap ml-4">{blog.date}</span>
+            {/* Accent bar */}
+            <div className="h-2 w-full bg-gradient-to-r from-[#6b21a8] to-[#a855f7] mb-4" />
+            <div className="flex-1 flex flex-col px-6 pt-2 pb-6">
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="text-xl font-extrabold text-gray-50 group-hover:text-[#a855f7] transition-colors drop-shadow-sm">
+                  {blog.title}
+                </h3>
+                <span className="text-xs font-semibold text-[#a855f7] bg-[#2d1333]/60 px-2 py-1 rounded-full ml-4 shadow-sm">
+                  {blog.date}
+                </span>
               </div>
-              <p className="text-sm text-gray-300 leading-relaxed mb-4">{blog.description}</p>
+              <p className="text-[15px] text-gray-300 leading-relaxed mb-6 font-medium">
+                {blog.description}
+              </p>
+              <span className="text-[#a855f7] font-bold flex items-center gap-1 transition-transform group-hover:translate-x-1 mt-auto text-base">
+                Read More <span aria-hidden>→</span>
+              </span>
             </div>
-            {/* FIX: Ensure the "Read More" link stays at the bottom and the arrow is clearly visible */}
-            <span className="text-[#a855f7] font-semibold flex items-center gap-1 transition-transform group-hover:translate-x-1 mt-auto">
-              Read More &rarr;
-            </span>
+            {/* Glassmorphism shine effect */}
+            <span className="pointer-events-none absolute top-0 left-0 w-full h-full rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-br from-white/60 to-transparent" />
           </motion.a>
         ))}
       </motion.div>

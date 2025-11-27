@@ -284,12 +284,6 @@ const Projects = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
-  // Split projects into rows of 2
-  const rows = [];
-  for (let i = 0; i < projects.length; i += 2) {
-    rows.push(projects.slice(i, i + 2));
-  }
-
   return (
     <div className="min-h-screen bg-[#2d1333] text-[#e0e0e0] font-inter pt-2 md:pt-16 pb-8 overflow-hidden">
       <motion.h4
@@ -303,75 +297,56 @@ const Projects = () => {
       </motion.h4>
 
       <motion.div
-        className="flex flex-col gap-y-16 mt-12 mx-auto max-w-[1200px] px-4"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12 mx-auto max-w-[1200px] px-4"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {rows.map((rowProjects, rowIndex) => (
-          <div key={rowIndex} className="relative md:flex md:items-center md:justify-between gap-8">
-            {rowProjects.length === 2 && (
-              <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex-col items-center h-full">
-                <div className="w-[3px] bg-gradient-to-b from-[#6b21a8] via-[#9333ea] to-[#a855f7] h-1/2 
-                                shadow-[0_0_10px_rgba(168,85,247,0.7)] animate-pulse"></div>
-                <div className="relative flex items-center justify-center">
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#9333ea] to-[#a855f7] 
-                                  shadow-lg shadow-purple-500/50 animate-ping absolute opacity-70"></div>
-                  <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[#6b21a8] to-[#a855f7] 
-                                  border-2 border-white shadow-md"></div>
-                </div>
-                <div className="w-[3px] bg-gradient-to-b from-[#a855f7] via-[#9333ea] to-[#6b21a8] h-1/2 
-                                shadow-[0_0_10px_rgba(168,85,247,0.7)] animate-pulse"></div>
-              </div>
-            )}
-
-            {rowProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                className="relative bg-[#3a2a3e] rounded-2xl shadow-2xl p-6 border-t-8 border-[#a855f7] transition-all duration-300 hover:scale-[1.02] hover:shadow-xl min-w-[300px] max-w-[350px] mx-auto"
-                variants={itemVariants}
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            className="bg-[#3a2a3e] rounded-2xl shadow-2xl p-6 border-t-8 border-[#a855f7] transition-all duration-300 hover:scale-[1.02] hover:shadow-xl min-w-[300px] max-w-[350px] mx-auto"
+            variants={itemVariants}
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-40 object-cover rounded-xl mb-4 border-2 border-gray-700"
+            />
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="text-xl font-bold text-gray-50">{project.title}</h3>
+            </div>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.techStack.map((tech, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 bg-[#2d1333] text-[#a855f7] text-xs font-semibold rounded-full border border-[#a855f7] transition-colors hover:bg-[#a855f7] hover:text-[#2d1333]"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <div className="flex gap-4">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-[#2d1333] text-[#a855f7] font-semibold rounded-lg hover:bg-[#6b21a8] hover:text-white transition-colors no-underline"
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-40 object-cover rounded-xl mb-4 border-2 border-gray-700"
-                />
-                <div className="flex justify-between items-center mb-2">
-                  <h3 className="text-xl font-bold text-gray-50">{project.title}</h3>
-                </div>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-[#2d1333] text-[#a855f7] text-xs font-semibold rounded-full border border-[#a855f7] transition-colors hover:bg-[#a855f7] hover:text-[#2d1333]"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-[#2d1333] text-[#a855f7] font-semibold rounded-lg hover:bg-[#6b21a8] hover:text-white transition-colors"
-                  >
-                    {GITHUB_ICON}
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-[#2d1333] text-[#a855f7] font-semibold rounded-lg hover:bg-[#6b21a8] hover:text-white transition-colors"
-                  >
-                    {LIVE_ICON}
-                    <span>Live</span>
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                {GITHUB_ICON}
+                <span>GitHub</span>
+              </a>
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-[#2d1333] text-[#a855f7] font-semibold rounded-lg hover:bg-[#6b21a8] hover:text-white transition-colors no-underline"
+              >
+                {LIVE_ICON}
+                <span>Live</span>
+              </a>
+            </div>
+          </motion.div>
         ))}
       </motion.div>
     </div>

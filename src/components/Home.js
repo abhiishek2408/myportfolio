@@ -185,13 +185,13 @@ const Home = () => {
             >
               <a
                 href="https://drive.google.com/file/d/1935lrJ8NWNWkLvH6mSnxhpjLXmoL7nAV/view?usp=sharing"
-                className="bg-[#6b21a8] text-white px-8 py-3 rounded-full font-bold uppercase shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="bg-[#6b21a8] text-white px-8 py-3 rounded-full font-bold uppercase shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 no-underline"
               >
                 Download CV
               </a>
               <a
                 href="mailto:abhishekydv2408@gmail.com"
-                className="bg-[#a855f7] text-white px-8 py-3 rounded-full font-bold uppercase shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="bg-[#a855f7] text-white px-8 py-3 rounded-full font-bold uppercase shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 no-underline"
               >
                 Hire Me
               </a>

@@ -71,7 +71,7 @@ const Contact = () => {
       </motion.h4>
 
       <motion.div
-        className="flex flex-col md:flex-row w-full px-0 md:px-6 gap-10 mt-8 mx-auto max-w-7xl"
+        className="flex flex-col md:flex-row gap-10 mt-12 mx-auto max-w-[1200px] px-4"
         variants={formVariants}
         initial="hidden"
         animate="visible"
@@ -142,7 +142,7 @@ const Contact = () => {
             ></textarea>
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#a855f7] text-white font-bold rounded-lg shadow-md hover:bg-[#8b5cf6] focus:outline-none focus:ring-2 focus:ring-[#a855f7] focus:ring-offset-2 transition-colors duration-200"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#a855f7] text-white font-bold rounded-lg shadow-md hover:bg-[#8b5cf6] focus:outline-none focus:ring-2 focus:ring-[#a855f7] focus:ring-offset-2 transition-colors duration-200 no-underline"
             >
               {PAPER_PLANE_ICON} Send Message
             </button>
