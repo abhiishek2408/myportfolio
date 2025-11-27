@@ -127,7 +127,7 @@ const Home = () => {
               <img
                 src={mypic}
                 alt="Profile"
-                className="w-60 h-60 rounded-full object-cover border-4 border-white hover:scale-105 transition-transform duration-500 ease-in-out"
+                className="w-40 h-40 sm:w-60 sm:h-60 aspect-square rounded-full object-cover border-4 border-white hover:scale-105 transition-transform duration-500 ease-in-out"
               />
             </div>
           </motion.div>
