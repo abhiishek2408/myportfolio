@@ -1,154 +1,112 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaAddressCard } from 'react-icons/fa';
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 
 const PAPER_PLANE_ICON = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
   </svg>
 );
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const sectionVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-
-  const formVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, delay: 0.3, ease: "easeOut" } },
-  };
-
-  const successVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
     setIsSubmitted(true);
-
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
-
+    setFormData({ name: '', email: '', message: '' });
     setTimeout(() => setIsSubmitted(false), 3000);
   };
 
   return (
-    <div className="min-h-screen bg-[#2d1333] text-[#e0e0e0] font-inter pt-2 md:pt-16 pb-8 overflow-hidden">
-      <motion.h4
-        className="text-3xl md:text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] to-[#a855f7] tracking-wide relative pb-2"
-        variants={sectionVariants}
-        initial="hidden"
-        animate="visible"
+    <div className="contact-section w-full py-6 dark:bg-[#2d1333] dark:text-[#e0e0e0]">
+      <motion.section 
+        className="mt-8 mx-auto max-w-7xl px-6 bg-white/90 backdrop-blur-sm py-10 rounded-[2rem] shadow-[0_20px_60px_-40px_rgba(113,62,235,0.35)] border border-[#713eeb]/10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
       >
-        Get in Touch
-        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-[#6b21a8] to-[#a855f7] rounded-full"></span>
-      </motion.h4>
+      {/* Compact Header */}
+      <div className="text-center mb-10 relative">
+        <h4 className="text-xl md:text-2xl font-black text-gray-900 tracking-tight uppercase relative inline-block">
+          Get In Touch
+          <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-[#713eeb] rounded-full"></span>
+        </h4>
+        <p className="text-gray-400 mt-2 font-bold uppercase tracking-widest text-[9px]">Let's Build Something Together</p>
+      </div>
 
-      <motion.div
-        className="flex flex-col md:flex-row gap-10 mt-12 mx-auto max-w-[1200px] px-4"
-        variants={formVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Left side: Contact Information */}
-        <div className="md:w-1/2 bg-[#3a2a3e] rounded-2xl p-8 shadow-2xl flex flex-col gap-6">
-          <h3 className="text-3xl font-extrabold text-[#a855f7] flex items-center gap-3 mb-4">
-            <FaAddressCard /> Contact Information
-          </h3>
-          <p className="text-gray-300 mb-2">
-            Feel free to reach out via email, phone, or visit my location.
-          </p>
-          <div className="flex flex-col gap-4 text-gray-200">
-            <div className="flex items-center gap-3">
-              <FaEnvelope className="text-[#a855f7]" />
-              <span><span className="font-semibold">Email:</span> abhishekydv2408@gmail.com</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <FaPhoneAlt className="text-[#a855f7]" />
-              <span><span className="font-semibold">Phone:</span> +91 9305963544</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <FaMapMarkerAlt className="text-[#a855f7]" />
-              <span><span className="font-semibold">Location:</span> Ghazipur, Uttar Pradesh, India</span>
+      <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto">
+        {/* Left: Contact Info (Slimmed Down) */}
+        <div className="lg:w-1/3 space-y-4">
+          <div className="bg-[#f9fafb] p-5 rounded-xl border border-gray-100 h-full shadow-sm">
+            <h3 className="text-sm font-black text-gray-900 uppercase tracking-widest mb-4">Contact Info</h3>
+            
+            <div className="space-y-4">
+              {[
+                { icon: <FaEnvelope />, label: "Email", val: "abhishekydv2408@gmail.com" },
+                { icon: <FaPhoneAlt />, label: "Phone", val: "+91 9305963544" },
+                { icon: <FaMapMarkerAlt />, label: "Location", val: "Ghazipur, UP, India" }
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="mt-1 text-[#713eeb] text-xs">{item.icon}</div>
+                  <div>
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-tighter">{item.label}</p>
+                    <p className="text-xs font-bold text-gray-700">{item.val}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Right side: Contact Form */}
-        <div className="md:w-1/2 bg-[#3a2a3e] rounded-2xl shadow-2xl p-8 transition-all duration-300 hover:scale-[1.01] hover:shadow-xl">
-          {isSubmitted && (
-            <motion.p
-              className="text-center text-[#10b981] font-semibold mb-4"
-              variants={successVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              Message Sent Successfully!
-            </motion.p>
-          )}
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              required
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full p-4 bg-[#2d1333] rounded-lg border border-gray-600 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a855f7]"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full p-4 bg-[#2d1333] rounded-lg border border-gray-600 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a855f7]"
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              required
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full p-4 bg-[#2d1333] rounded-lg border border-gray-600 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a855f7] resize-none"
-            ></textarea>
-            <button
-              type="submit"
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#a855f7] text-white font-bold rounded-lg shadow-md hover:bg-[#8b5cf6] focus:outline-none focus:ring-2 focus:ring-[#a855f7] focus:ring-offset-2 transition-colors duration-200 no-underline"
-            >
-              {PAPER_PLANE_ICON} Send Message
-            </button>
-          </form>
+        {/* Right: Form (Compressed Inputs) */}
+        <div className="lg:w-2/3">
+          <div className="bg-[#f9fafb] p-5 rounded-xl border border-gray-100 shadow-sm">
+            {isSubmitted && (
+              <p className="text-[10px] font-bold text-green-600 bg-green-50 p-2 rounded mb-4 text-center uppercase tracking-widest">
+                <i className="fas fa-check mr-2"></i>
+                Message Sent Successfully!
+              </p>
+            )}
+            <form className="space-y-3" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  required
+                  className="w-full px-4 py-2.5 bg-white rounded-lg border border-gray-200 text-xs text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#713eeb]/40 focus:border-[#713eeb]/40 transition-all"
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                />
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  required
+                  className="w-full px-4 py-2.5 bg-white rounded-lg border border-gray-200 text-xs text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#713eeb]/40 focus:border-[#713eeb]/40 transition-all"
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                />
+              </div>
+              <textarea
+                placeholder="How can I help you?"
+                required
+                rows="3"
+                className="w-full px-4 py-2.5 bg-white rounded-lg border border-gray-200 text-xs text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#713eeb]/40 focus:border-[#713eeb]/40 transition-all resize-none"
+                value={formData.message}
+                onChange={(e) => setFormData({...formData, message: e.target.value})}
+              ></textarea>
+              <button
+                type="submit"
+                className="w-full md:w-max px-8 py-2.5 bg-gradient-to-r from-[#7c3aed] to-[#4f46e5] text-white font-black text-[10px] uppercase tracking-[0.2em] rounded-lg shadow-md hover:shadow-lg hover:from-[#6d28d9] hover:to-[#4338ca] transition-all flex items-center justify-center gap-2"
+              >
+                {PAPER_PLANE_ICON} Send Message
+              </button>
+            </form>
+          </div>
         </div>
-      </motion.div>
+      </div>
+      </motion.section>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#2d1333] border-t border-gray-700 text-[#e0e0e0] font-inter py-12 ">
+    <footer className="bg-[#2d1333] border-t border-white/10 text-[#e0e0e0] font-inter py-12 ">
       <div className="max-w-6xl  mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
         
         {/* Left: About / Brand */}

@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import mypic from '../image/mypic.jpg'
 
-// Reusing the inline SVG components from the previous fix
 const SvgPhone = (props) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
     <path d="M16.5 13.5l-2.493 2.493a1.5 1.5 0 01-2.121 0l-.707-.707a1.5 1.5 0 010-2.121l2.493-2.493a1.5 1.5 0 012.121 0l.707.707a1.5 1.5 0 010 2.121zM9.5 7.5l-2.493-2.493a1.5 1.5 0 00-2.121 0l-.707.707a1.5 1.5 0 000 2.121l2.493 2.493a1.5 1.5 0 002.121 0l.707-.707a1.5 1.5 0 000-2.121zM12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zM12 20a8 8 0 118-8 8.009 8.009 0 01-8 8z"/>
-    <path d="M12 9.5a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zM12 14.5a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5z"/>
   </svg>
 );
 const SvgEnvelope = (props) => (
@@ -25,7 +23,6 @@ const SvgGithub = (props) => (
   </svg>
 );
 
-
 const Home = () => {
   const profile = {
     name: "Abhishek",
@@ -39,56 +36,41 @@ const Home = () => {
     ]
   };
 
-  // State to handle the advanced typewriter effect
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(100);
 
   useEffect(() => {
-    // Determine the current title from the array
     const currentTitle = profile.titleOptions[currentTitleIndex];
 
-    // Typing logic
-    if (!isDeleting && typedText.length < currentTitle.length) {
-      setTypingSpeed(100);
-      setTypedText(currentTitle.substring(0, typedText.length + 1));
-    }
-    // Deleting logic (backspacing)
-    else if (isDeleting && typedText.length > 0) {
-      setTypingSpeed(50);
-      setTypedText(currentTitle.substring(0, typedText.length - 1));
-    }
-    // Transition to the next title
-    else if (!isDeleting && typedText.length === currentTitle.length) {
-      setTypingSpeed(1500); // Pause for a moment after typing
-      setTimeout(() => setIsDeleting(true), 1500);
-    }
-    // Finished deleting, move to the next title in the array
-    else if (isDeleting && typedText.length === 0) {
-      setIsDeleting(false);
-      setCurrentTitleIndex((prev) => (prev + 1) % profile.titleOptions.length);
-      setTypingSpeed(200); // Pause for a moment before starting to type again
-    }
+    const handleTyping = () => {
+      if (!isDeleting && typedText.length < currentTitle.length) {
+        setTypedText(currentTitle.substring(0, typedText.length + 1));
+        setTypingSpeed(100);
+      } else if (isDeleting && typedText.length > 0) {
+        setTypedText(currentTitle.substring(0, typedText.length - 1));
+        setTypingSpeed(50);
+      } else if (!isDeleting && typedText.length === currentTitle.length) {
+        setTypingSpeed(1500);
+        setIsDeleting(true);
+      } else if (isDeleting && typedText.length === 0) {
+        setIsDeleting(false);
+        setCurrentTitleIndex((prev) => (prev + 1) % profile.titleOptions.length);
+        setTypingSpeed(200);
+      }
+    };
 
-    const timer = setTimeout(() => {
-      // The state changes will trigger re-renders and continue the effect
-    }, typingSpeed);
-
+    const timer = setTimeout(handleTyping, typingSpeed);
     return () => clearTimeout(timer);
   }, [typedText, isDeleting, currentTitleIndex, profile.titleOptions, typingSpeed]);
-
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-        staggerChildren: 0.2,
-      },
+      transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 },
     },
   };
 
@@ -99,116 +81,129 @@ const Home = () => {
 
   const getIconColor = (name) => {
     switch (name) {
-      case "LinkedIn":
-        return "#0077B5";
-      case "GitHub":
-        return "#ffffff";
-      default:
-        return "#ffffff"; // Default color for other icons
+      case "LinkedIn": return "#0077B5";
+      case "GitHub": return "#333";
+      case "Phone": return "#25D366";
+      case "Email": return "#EA4335";
+      default: return "#555";
     }
   };
 
   return (
-    // The single root element now has the new dark background and a light text color
-    <div className="w-full min-h-screen pt-5 flex flex-col items-center font-inter p-16 bg-[#2d1333] text-[#e0e0e0] overflow-hidden">
+    <div className="home-section w-full dark:bg-[#2d1333] dark:text-[#e0e0e0]">
+      <div className="w-full min-h-screen pt-5 flex flex-col items-center font-inter p-16 bg-[#f5f5f5] text-[#333333] overflow-hidden dark:bg-[#2d1333] dark:text-[#e0e0e0]">
+      <motion.div
+        className="w-full flex flex-col lg:flex-row justify-center items-center mt-20"
+        variants={cardVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Profile Picture Section with Blob Effect */}
         <motion.div
-            className="w-full flex flex-col lg:flex-row justify-center items-center mt-20"
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
+          className="w-full lg:w-1/3 flex justify-center p-4"
+          variants={itemVariants}
         >
-          {/* Profile Picture Section */}
-          <motion.div
-            className="w-full lg:w-1/3 flex justify-center p-4"
-            variants={itemVariants}
-          >
-            {/* Subtle profile picture styling for the new theme */}
-            <div className="relative rounded-full p-2 bg-gradient-to-tr from-[#6b21a8] to-[#a855f7] shadow-md">
-              <img
-                src={mypic}
-                alt="Profile"
-                className="w-40 h-40 sm:w-60 sm:h-60 aspect-square rounded-full object-cover border-4 border-white hover:scale-105 transition-transform duration-500 ease-in-out"
-              />
-            </div>
-          </motion.div>
-
-          {/* Content Section */}
-          <div className="w-full lg:w-2/3 text-center lg:text-center">
-            <motion.div variants={itemVariants}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] to-[#a855f7]">
-                Hi, I'm {profile.name}
-              </h1>
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-light mb-4 text-[#e0e0e0] min-h-[3rem]">
-                {typedText}
-                <span className="inline-block w-0.5 h-6 ml-1 bg-white animate-blink"></span>
-              </h3>
-            </motion.div>
-
-            <motion.p
-              className="text-lg text-[#e0e0e0] leading-relaxed mb-6 max-w-prose mx-auto lg:mx-auto"
-              variants={itemVariants}
-            >
-              {profile.bio}
-            </motion.p>
+          <div className="relative group">
+            {/* Animated Glow Background */}
+            <div className="absolute inset-0  opacity-30 blur-2xl group-hover:opacity-50 transition-opacity duration-500 animate-blob"></div>
             
-            {/* Contact Section - Aligned to center for all screen sizes */}
-            <motion.div
-              className="flex flex-wrap justify-center gap-4 mb-6"
-              variants={itemVariants}
-            >
-              {profile.contact.map((item, i) => (
-                <a
-                  key={i}
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={item.name}
-                  // Changed button background for new theme color
-                  className="w-12 h-12 flex items-center justify-center rounded-full bg-[#2d1333] hover:bg-[#6b21a8] transition-all duration-300 ease-in-out group"
-                >
-                  {React.cloneElement(item.icon, {
-                    // Using a helper function to determine the color of each icon
-                    className: `text-xl group-hover:text-white transition-colors duration-300`,
-                    style: { color: getIconColor(item.name) }
-                  })}
-                </a>
-              ))}
-            </motion.div>
-
-            {/* Attractive Buttons - Aligned to center for all screen sizes */}
-            <motion.div
-              className="flex flex-wrap justify-center gap-4"
-              variants={itemVariants}
-            >
-              <a
-                href="https://drive.google.com/file/d/1935lrJ8NWNWkLvH6mSnxhpjLXmoL7nAV/view?usp=sharing"
-                className="bg-[#6b21a8] text-white px-8 py-3 rounded-full font-bold uppercase shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 no-underline"
-              >
-                Download CV
-              </a>
-              <a
-                href="mailto:abhishekydv2408@gmail.com"
-                className="bg-[#a855f7] text-white px-8 py-3 rounded-full font-bold uppercase shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 no-underline"
-              >
-                Hire Me
-              </a>
-            </motion.div>
+            <img
+              src={mypic}
+              alt="Profile"
+              className="w-48 h-48 sm:w-64 sm:h-64 object-cover border-4 border-white shadow-2xl transition-all duration-700 ease-in-out hover:scale-105"
+              style={{
+                borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
+                animation: "morph 8s ease-in-out infinite"
+              }}
+            />
           </div>
         </motion.div>
 
-        {/* Custom CSS for animations */}
-        <style>{`
-          @keyframes blink {
-            50% { opacity: 0; }
-          }
-          .animate-blink {
-            animation: blink 0.75s step-end infinite;
-          }
-        `}</style>
+        {/* Content Section */}
+        <div className="w-full lg:w-2/3 text-center lg:text-left lg:pl-12">
+          <motion.div variants={itemVariants}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#4f46e5]">
+              Hi, I'm {profile.name}
+            </h1>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium mb-4 text-[#555555] dark:text-[#cbd5e1] min-h-[3rem]">
+              {typedText}
+              <span className="inline-block w-0.5 h-6 ml-1 bg-[#7c3aed] animate-blink"></span>
+            </h3>
+          </motion.div>
+
+          <motion.p
+            className="text-lg text-[#666666] dark:text-[#cbd5e1] leading-relaxed mb-8 max-w-prose mx-auto lg:mx-0"
+            variants={itemVariants}
+          >
+            {profile.bio}
+          </motion.p>
+          
+          <motion.div
+            className="flex flex-wrap justify-center lg:justify-center gap-5 mb-10"
+            variants={itemVariants}
+          >
+            {profile.contact.map((item, i) => (
+              <a
+                key={i}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-gray-50 border border-gray-100 shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-1 transition-all duration-300 ease-in-out group dark:bg-[#2d1333] dark:border-white/10 dark:hover:bg-[#2d1333]"
+              >
+                {React.cloneElement(item.icon, {
+                  className: `w-6 h-6 transition-colors duration-300`,
+                  style: { color: getIconColor(item.name) }
+                })}
+              </a>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className="flex flex-wrap justify-center lg:justify-center gap-4"
+            variants={itemVariants}
+          >
+            <a
+              href="YOUR_CV_LINK_HERE"
+              className="bg-[#7c3aed] text-white px-10 py-3.5 rounded-full font-bold uppercase tracking-wider shadow-lg shadow-purple-200 hover:bg-[#6d28d9] transition-all duration-300 transform hover:scale-105 no-underline"
+            >
+              Download CV
+            </a>
+            <a
+              href="mailto:abhishekydv2408@gmail.com"
+              className="border-2 border-[#7c3aed] text-[#7c3aed] px-10 py-3 rounded-full font-bold uppercase tracking-wider hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 no-underline"
+            >
+              Hire Me
+            </a>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      <style>{`
+        @keyframes blink { 50% { opacity: 0; } }
+        .animate-blink { animation: blink 0.75s step-end infinite; }
+
+        @keyframes morph {
+          0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+          50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+          100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        @keyframes blob-float {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(5px, -10px) scale(1.05); }
+          66% { transform: translate(-5px, 10px) scale(0.95); }
+          100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        .animate-blob {
+          animation: blob-float 7s infinite alternate;
+        }
+      `}</style>
       </div>
+    </div>
   );
 };
 

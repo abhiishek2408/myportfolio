@@ -30,10 +30,19 @@ const CLOSE_ICON = (
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const shouldUseDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+    setIsDarkMode(shouldUseDark);
+    document.documentElement.classList.toggle('dark', shouldUseDark);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,11 +58,20 @@ const Navbar = () => {
     };
   }, []);
 
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => {
+      const next = !prev;
+      document.documentElement.classList.toggle('dark', next);
+      localStorage.setItem('theme', next ? 'dark' : 'light');
+      return next;
+    });
+  };
+
   const menuItems = ['Home', 'About', 'Projects', 'Contact', 'Blog'];
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 z-50 w-full transition-colors duration-300 ${isScrolled ? 'bg-[#2d1333] shadow-md' : 'bg-transparent'}`}
+      className={`fixed top-0 left-0 z-50 w-full transition-colors duration-300 ${isScrolled ? (isDarkMode ? 'bg-[#2d1333] shadow-md' : 'bg-[#f5f5f5] shadow-md') : 'bg-transparent'}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 15 }}
@@ -61,16 +79,24 @@ const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <span className="text-2xl font-bold text-white drop-shadow-md">
+          <span className="text-2xl font-bold text-[#a855f7] drop-shadow-md">
             Abhishek
           </span>
 
           {/* Mobile Menu Button */}
-          <div className="flex md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              onClick={toggleTheme}
+              type="button"
+              className={`${isDarkMode ? 'text-white' : 'text-black'} hover:text-[#a855f7] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#a855f7] dark:focus:ring-0 rounded-md p-2 transition-colors duration-200`}
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? <i className="fas fa-sun" aria-hidden="true"></i> : <i className="fas fa-moon" aria-hidden="true"></i>}
+            </button>
             <button
               onClick={toggleMenu}
               type="button"
-              className="text-[#e0e0e0] hover:text-[#a855f7] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#a855f7] rounded-md p-2 transition-colors duration-200"
+              className={`${isDarkMode ? 'text-white' : 'text-black'} hover:text-[#a855f7] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#a855f7] dark:focus:ring-0 rounded-md p-2 transition-colors duration-200`}
               aria-controls="mobile-menu"
               aria-expanded={isMenuOpen}
             >
@@ -87,25 +113,33 @@ const Navbar = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="relative font-light no-underline transition-colors duration-200 group text-[#e0e0e0] hover:text-[#a855f7]"
+                  className={`relative font-light no-underline transition-colors duration-200 group ${isDarkMode ? 'text-white' : 'text-black'} hover:text-[#a855f7]`}
                 >
                   {item}
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#a855f7] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
               ))}
             </div>
+            <button
+              onClick={toggleTheme}
+              type="button"
+              className={`ml-6 ${isDarkMode ? 'text-white' : 'text-black'} hover:text-[#a855f7] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#a855f7] dark:focus:ring-0 rounded-md p-2 transition-colors duration-200`}
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? <i className="fas fa-sun" aria-hidden="true"></i> : <i className="fas fa-moon" aria-hidden="true"></i>}
+            </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden bg-[#3a2a3e] p-4 transition-all duration-300 ease-in-out`}>
+      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden bg-[#f5f5f5] dark:bg-[#2d1333] p-4 transition-all duration-300 ease-in-out`}>
         <div className="px-2 pt-2 pb-3 space-y-2">
           {menuItems.map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="block px-3 py-2 rounded-md text-base font-light no-underline hover:bg-white/10 relative group text-[#e0e0e0] hover:text-[#a855f7] transition-colors duration-200"
+              className={`block px-3 py-2 rounded-md text-base font-light no-underline hover:bg-white/10 relative group ${isDarkMode ? 'text-white' : 'text-black'} hover:text-[#a855f7] transition-colors duration-200`}
               onClick={() => setIsMenuOpen(false)}
             >
               {item}

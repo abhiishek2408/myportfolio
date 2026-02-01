@@ -6,7 +6,7 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
 import { motion } from "framer-motion";
 import { SiReact, SiNodedotjs, SiExpress, SiMysql, SiHtml5, SiCss3, SiMongodb, SiLaravel, SiPhp, SiTailwindcss, SiJavascript, SiDjango, SiPostgresql, SiGithub, SiGit, SiDocker, SiPostman } from 'react-icons/si';
 import { SiC, SiCplusplus } from 'react-icons/si';
-
+import InternshipTraining from "./InternshipTraining";
 
 
 const programmingLanguages = [
@@ -195,477 +195,364 @@ const About = () => {
 
   return (
     // Main container with consistent theme
-    <div className="w-full min-h-screen bg-[#2d1333] text-[#e0e0e0] font-inter p-2 md:p-4 lg:p-6 overflow-hidden text-[0.95rem]">
+    <div className="w-full min-h-screen about-section dark:bg-[#2d1333] dark:text-[#e0e0e0] font-inter p-2 md:p-4 lg:p-6 overflow-hidden text-[0.95rem]">
       
-      {/* About & Radar Chart Section */}
+    
+
+
+    {/* --- Main Info & Radar Section --- */}
+<motion.div 
+  className="flex flex-col lg:flex-row items-stretch justify-center gap-10 p-8 md:p-12 bg-white/90 backdrop-blur-sm rounded-[2rem] mx-auto max-w-7xl shadow-[0_25px_70px_-40px_rgba(113,62,235,0.35)] border border-[#713eeb]/10 mt-10"
+  variants={containerVariants}
+  initial="hidden"
+  animate="visible"
+>
+  {/* Left Column: Bio & Cards */}
+  <div className="flex-[1.5] flex flex-col gap-8 dark:bg-[#2d1333] dark:text-[#e0e0e0]">
+    
+    {/* Bio Content Box */}
+    <motion.div 
+      className="relative overflow-hidden rounded-3xl bg-gray-50 p-8 border border-gray-100 shadow-inner"
+      variants={itemVariants}
+    >
+      <div className="absolute top-0 left-0 w-2 h-full bg-[#713eeb]"></div>
+      
+      <div className="space-y-5 text-gray-700 leading-relaxed">
+        <p className="text-lg">
+          Hi, I'm <span className="text-[#713eeb] font-bold">Abhishek</span>, a driven <span className="text-[#713eeb] font-bold">full-stack developer</span> committed to engineering high-performance web solutions.
+        </p>
+        <p className="text-sm md:text-base opacity-90 font-medium">
+          I specialize in building scalable architectures using <span className="font-bold text-gray-900">React, Node.js, and Cloud Technologies.</span> My approach combines technical precision with a focus on seamless user experiences.
+        </p>
+      </div>
+    </motion.div>
+
+    {/* Hobbies & Goal Cards Side-by-Side */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Hobbies Card */}
       <motion.div 
-        className="flex flex-col lg:flex-row items-start justify-center gap-12 p-6 md:p-10 lg:p-14 bg-[#3a2a3e] rounded-3xl mx-auto max-w-6xl shadow-2xl border border-[#a855f7]/30 mt-4"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        className="group p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:shadow-xl hover:border-[#713eeb]/30 transition-all duration-300"
+        variants={itemVariants}
       >
-        {/* About Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-2 w-full items-center">
-          {/* About Text */}
-          <motion.div className="space-y-4 flex flex-col justify-center h-full" variants={itemVariants}>
-            <motion.h4 
-              className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#a855f7] via-[#6b21a8] to-[#a855f7] drop-shadow-lg mb-2 tracking-tight"
-              variants={itemVariants}
-            >
-              <span className="inline-block align-middle mr-2 text-[#a855f7]">
-                <AiOutlineInfoCircle size={32} style={{ verticalAlign: 'middle' }} />
-              </span>
-              About Me
-            </motion.h4>
-            <motion.p 
-              className="text-sm  leading-relaxed text-gray-200 text-justify  bg-[#2d1333]/60 rounded-xl p-4 shadow border border-[#a855f7]/20 font-normal tracking-wide"
-              style={{ fontFamily: 'Poppins, Inter, Arial, sans-serif' }}
-              variants={itemVariants}
-            >
-              Hi, I'm <span className="text-[#a855f7] font-bold">Abhishek</span>, a passionate <span className="text-[#a855f7] font-bold">full-stack developer</span> with a strong focus on crafting beautiful and efficient web applications.<br className="hidden md:block" />
-              I love solving real-world problems through clean code, scalable architectures, and interactive UI experiences.<br className="hidden md:block" />
-              Over time, I've built solid expertise in <span className="text-[#a855f7] font-semibold">React</span>, <span className="text-[#a855f7] font-semibold">Node.js</span>, <span className="text-[#a855f7] font-semibold">Express</span>, and databases like <span className="text-[#a855f7] font-semibold">MongoDB</span> and <span className="text-[#a855f7] font-semibold">MySQL</span>.<br className="hidden md:block" />
-              My journey in tech began with curiosity and a drive to create things that make a difference. I believe in continuous learning and enjoy mentoring others who share the same passion.<br className="hidden md:block" />
-              Whether it's building robust APIs, designing intuitive UIs, or optimizing performance, I approach every challenge with creativity and determination.<br className="hidden md:block" />
-              I thrive in collaborative environments, enjoy debugging as much as building, and constantly explore new technologies to elevate my development stack.
-            </motion.p>
-          </motion.div>
-
-          {/* Hobbies & Goal Cards with vertical connector and glassmorphism */}
-          <motion.div className="relative flex flex-col items-center justify-center h-full gap-8 mt-16" variants={containerVariants}>
-            {/* Vertical line connector */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-8 bottom-8 w-1 bg-gradient-to-b from-[#a855f7] via-[#6b21a8] to-[#a855f7] opacity-40 rounded-full z-0 hidden lg:block"></div>
-            {/* Hobbies Card */}
-            <motion.div 
-              className="relative z-10 w-full max-w-xs p-6 rounded-3xl bg-[#2d1333]/60 backdrop-blur-md border border-[#a855f7]/40 shadow-2xl text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl text-base font-semibold flex flex-col items-center"
-              variants={itemVariants}
-            >
-              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-[#a855f7] to-[#6b21a8] shadow-lg mb-3 text-3xl text-white">
-                <GiCricketBat size={32} />
-              </div>
-              <h4 className="text-xl font-bold mb-2 text-[#a855f7] text-center">Hobbies</h4>
-              <p className="text-sm text-gray-200 font-normal text-center">Playing Cricket, Coding, Solving Puzzles, Exploring Tech Trends</p>
-            </motion.div>
-
-            {/* Goal Card */}
-            <motion.div 
-              className="relative z-10 w-full max-w-xs p-6 rounded-3xl bg-[#2d1333]/60 backdrop-blur-md border border-[#6b21a8]/40 shadow-2xl text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl text-base font-semibold flex flex-col items-center"
-              variants={itemVariants}
-            >
-              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-[#6b21a8] to-[#a855f7] shadow-lg mb-3 text-3xl text-white">
-                <FaRocket size={32} />
-              </div>
-              <h4 className="text-xl font-bold mb-2 text-[#6b21a8] text-center">Goal</h4>
-              <p className="text-sm text-gray-200 font-normal text-center">To grow as a skilled full-stack developer by working on challenging projects, learning new technologies, and contributing to impactful solutions.</p>
-            </motion.div>
-          </motion.div>
+        <div className="w-14 h-14 rounded-2xl bg-[#713eeb]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+          <GiCricketBat size={30} className="text-[#713eeb]" />
         </div>
-
-        {/* Radar Chart Container */}
-        <motion.div 
-          className="flex-1 w-full lg:w-auto min-w-[220px] max-w-[350px] flex justify-center items-center mx-auto"
-          variants={itemVariants}
-        >
-          <div className="w-full mt-6 pl-0 md:pl-0 pr-48 md:pr-80">
-            <h3 className="text-lg md:text-xl font-bold text-center text-white mb-2 ml-16 whitespace-nowrap">Skill Proficiency</h3>
-            <ResponsiveContainer width={320} height={300}>
-              <RadarChart outerRadius={60} data={skillsData}>
-                <PolarGrid stroke="#6b21a8" />
-                <PolarAngleAxis dataKey="subject" stroke="#fff" tick={{ fontSize: 13, fontWeight: 600, fill: '#fff' }} />
-                <Radar name="Skill" dataKey="A" stroke="#a855f7" fill="#a855f7" fillOpacity={0.6} />
-              </RadarChart>
-            </ResponsiveContainer>
-          </div>
-        </motion.div>
+        <h5 className="text-lg font-bold text-gray-900 mb-1">Hobbies</h5>
+        <p className="text-xs md:text-sm text-gray-500 font-medium italic">Cricket, Coding, Puzzles, Tech Exploration</p>
       </motion.div>
+
+      {/* Goal Card */}
+      <motion.div 
+        className="group p-6 rounded-2xl bg-white border border-gray-100 shadow-md hover:shadow-xl hover:border-[#713eeb]/30 transition-all duration-300"
+        variants={itemVariants}
+      >
+        <div className="w-14 h-14 rounded-2xl bg-[#713eeb]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+          <FaRocket size={28} className="text-[#713eeb]" />
+        </div>
+        <h5 className="text-lg font-bold text-gray-900 mb-1">Goal</h5>
+        <p className="text-xs md:text-sm text-gray-500 font-medium">To lead impactful projects and master Agentic AI systems.</p>
+      </motion.div>
+    </div>
+  </div>
+
+  {/* Right Column: Skill Radar */}
+  <motion.div 
+    className="flex-1 flex flex-col bg-[#fafafa] rounded-[2rem] border border-gray-100 p-8 items-center justify-center relative overflow-hidden"
+    variants={itemVariants}
+  >
+    {/* Heading updated to #713eeb */}
+    <div className="absolute top-8 left-1/2 -translate-x-1/2 w-full text-center">
+        <h3 className="text-sm font-black text-[#713eeb] tracking-[0.25em] uppercase drop-shadow-sm">
+          Architecture Proficiency
+        </h3>
+        <div className="w-8 h-1 bg-[#713eeb]/20 mx-auto mt-2 rounded-full"></div>
+    </div>
+    
+    <div className="w-full h-[320px] mt-10">
+      <ResponsiveContainer width="100%" height="100%">
+        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={skillsData}>
+          <PolarGrid stroke="#e2e8f0" strokeWidth={1} />
+          <PolarAngleAxis 
+            dataKey="subject" 
+            tick={{ fill: '#713eeb', fontSize: 10, fontWeight: 800 }} 
+          />
+          <Radar
+            name="Skills"
+            dataKey="A"
+            stroke="#713eeb"
+            strokeWidth={3}
+            fill="#713eeb"
+            fillOpacity={0.15}
+            dot={{ r: 6, fill: '#713eeb', strokeWidth: 3, stroke: '#fff' }}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
+    </div>
+  </motion.div>
+</motion.div>
 
 
 
       {/* --- Skills & Technologies Section --- */}
-        <motion.section 
-      className="mt-4 mx-auto max-w-6xl"
-  variants={containerVariants}
+{/* --- Technical Ecosystem Section --- */}
+<motion.section 
+  className="mt-8 mx-auto max-w-7xl px-6 bg-white/90 backdrop-blur-sm py-10 rounded-[2rem] shadow-[0_20px_60px_-40px_rgba(113,62,235,0.35)] border border-[#713eeb]/10"
   initial="hidden"
-  animate="visible"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={containerVariants}
 >
-  <motion.h5 
-    className="text-2xl md:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] to-[#a855f7] tracking-wide relative pb-1"
-    variants={sectionTitleVariants}
-  >
-    Skills & Technologies
-    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-[#6b21a8] to-[#a855f7] rounded-full"></span>
-  </motion.h5>
+  {/* Compact Header */}
+  <div className="text-center mb-10 relative">
+    <motion.h2 
+      className="text-xl md:text-2xl font-black text-gray-900 tracking-tight uppercase"
+      variants={itemVariants}
+    >
+      Technical <span className="text-[#713eeb]">Ecosystem</span>
+    </motion.h2>
+    <div className="mt-2 flex justify-center items-center gap-1.5">
+      <span className="w-8 h-0.5 bg-[#713eeb] rounded-full"></span>
+      <span className="w-2 h-0.5 bg-[#713eeb]/40 rounded-full"></span>
+    </div>
+  </div>
 
-  {/* Advanced Skills Grid with Progress Bars */}
-  <motion.div
-    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 p-8 bg-[#3a2a3e] rounded-2xl shadow-xl border border-[#a855f7]/30"
-    variants={containerVariants}
-  >
-    {/* Programming Languages */}
-    <motion.div className="flex flex-col gap-2 bg-[#2d1333]/80 rounded-xl p-3 shadow border border-[#a855f7]/40" variants={itemVariants}>
-      <h3 className="text-base font-bold text-[#a855f7] mb-1 flex items-center gap-2">
-        <span className="inline-block w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span> Programming Languages
-      </h3>
-      {programmingLanguages.map((skill, idx) => {
-        const percent = 80 + idx * 5;
-        return (
-          <div key={idx} className="flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center">{skill.icon}</span>
-            <span className="text-white font-medium w-20 text-xs">{skill.name}</span>
-            <div className="flex-1 relative cursor-pointer group/percent">
-              <div className="w-full h-3 bg-[#3a2a3e] rounded-full overflow-hidden">
-                <motion.div
-                  className="h-3 rounded-full bg-gradient-to-r from-[#6b21a8] to-[#a855f7] shadow-lg"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${percent}%` }}
-                  transition={{ duration: 1 + idx * 0.2 }}
-                ></motion.div>
-              </div>
-              <span className="absolute left-1/2 -translate-x-1/2 -top-8 px-2 py-1 rounded bg-[#2d1333] text-xs text-white opacity-0 group-hover/percent:opacity-100 hover:opacity-100 transition-opacity pointer-events-auto shadow border border-[#a855f7] z-50 whitespace-nowrap select-none">
-                {percent}%
-              </span>
-            </div>
+  {/* Tighter Skills Grid */}
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    
+    {/* Category Cards */}
+    {[
+      { title: "Frontend", skills: frontendSkills, delay: 0.1 },
+      { title: "Backend", skills: backendSkills, delay: 0.2 },
+      { title: "Programming", skills: programmingLanguages, delay: 0.3 },
+      { title: "Databases", skills: databaseSkills, delay: 0.4 },
+      { title: "Tools", skills: toolSkills, delay: 0.5 },
+    ].map((category, catIdx) => (
+      <motion.div 
+        key={catIdx}
+        className="bg-[#f9fafb] rounded-xl p-5 border border-gray-100 hover:border-[#713eeb]/20 transition-all duration-300 group"
+        variants={itemVariants}
+      >
+        <div className="flex justify-between items-center mb-5">
+          <h4 className="text-sm font-black text-gray-800 uppercase tracking-wider">{category.title}</h4>
+          <div className="text-[#713eeb]/30 group-hover:text-[#713eeb] transition-colors">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
           </div>
-        );
-      })}
-    </motion.div>
+        </div>
 
-    {/* Frontend Skills */}
-    <motion.div className="flex flex-col gap-2 bg-[#2d1333]/80 rounded-xl p-3 shadow border border-[#a855f7]/40" variants={itemVariants}>
-      <h3 className="text-base font-bold text-[#a855f7] mb-1 flex items-center gap-2">
-        <span className="inline-block w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span> Frontend Skills
-      </h3>
-      {frontendSkills.map((skill, idx) => {
-        const percent = 85 - idx * 7;
-        return (
-          <div key={idx} className="flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center">{skill.icon}</span>
-            <span className="text-white font-medium w-20 text-xs">{skill.name}</span>
-            <div className="flex-1 relative group cursor-pointer">
-              <div className="w-full h-3 bg-[#3a2a3e] rounded-full overflow-hidden">
-                <motion.div
-                  className="h-3 rounded-full bg-gradient-to-r from-[#a855f7] to-[#6b21a8] shadow-lg"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${percent}%` }}
-                  transition={{ duration: 1 + idx * 0.2 }}
-                ></motion.div>
+        <div className="space-y-4">
+          {category.skills.map((skill, sIdx) => {
+            const level = 85 - (sIdx * 5); 
+            return (
+              <div key={sIdx} className="relative">
+                <div className="flex justify-between items-center mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <div className="text-lg transition-all duration-500">
+                      {skill.icon}
+                    </div>
+                    <span className="text-[11px] font-bold text-gray-600">{skill.name}</span>
+                  </div>
+                  <span className="text-[9px] font-black text-[#713eeb]">{level}%</span>
+                </div>
+                <div className="h-1 w-full bg-gray-200/50 rounded-full overflow-hidden">
+                  <motion.div 
+                    className="h-full bg-[#713eeb] rounded-full"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${level}%` }}
+                    transition={{ duration: 1, delay: category.delay }}
+                  />
+                </div>
               </div>
-              <span className="absolute left-1/2 -translate-x-1/2 -top-8 px-2 py-1 rounded bg-[#2d1333] text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-auto shadow border border-[#a855f7] z-50 whitespace-nowrap">
-                {percent}%
-              </span>
-            </div>
-          </div>
-        );
-      })}
-    </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
+    ))}
 
-    {/* Backend Skills */}
-    <motion.div className="flex flex-col gap-2 bg-[#2d1333]/80 rounded-xl p-3 shadow border border-[#a855f7]/40" variants={itemVariants}>
-      <h3 className="text-base font-bold text-[#a855f7] mb-1 flex items-center gap-2">
-        <span className="inline-block w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span> Backend Skills
+    {/* Specialized Core Card - Matching Compact Style */}
+    <motion.div 
+      className="lg:col-span-1 md:col-span-2 bg-[#f9fafb] rounded-xl p-5 border-2 border-[#713eeb]/10 relative overflow-hidden group"
+      variants={itemVariants}
+    >
+      <h3 className="text-sm font-black text-gray-900 mb-6 flex items-center gap-2 uppercase tracking-wider">
+        <span className="text-base"><i className="fas fa-rocket" aria-hidden="true"></i></span>
+        Specializations
       </h3>
-      {backendSkills.map((skill, idx) => {
-        const percent = 80 - idx * 8;
-        return (
-          <div key={idx} className="flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center">{skill.icon}</span>
-            <span className="text-white font-medium w-20 text-xs">{skill.name}</span>
-            <div className="flex-1 relative group cursor-pointer">
-              <div className="w-full h-3 bg-[#3a2a3e] rounded-full overflow-hidden">
-                <motion.div
-                  className="h-3 rounded-full bg-gradient-to-r from-[#6b21a8] to-[#a855f7] shadow-lg"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${percent}%` }}
-                  transition={{ duration: 1 + idx * 0.2 }}
-                ></motion.div>
-              </div>
-              <span className="absolute left-1/2 -translate-x-1/2 -top-8 px-2 py-1 rounded bg-[#2d1333] text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-auto shadow border border-[#a855f7] z-50 whitespace-nowrap">
-                {percent}%
-              </span>
-            </div>
-          </div>
-        );
-      })}
-    </motion.div>
 
-    {/* Database Skills */}
-    <motion.div className="flex flex-col gap-2 bg-[#2d1333]/80 rounded-xl p-3 shadow border border-[#a855f7]/40" variants={itemVariants}>
-      <h3 className="text-base font-bold text-[#a855f7] mb-1 flex items-center gap-2">
-        <span className="inline-block w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span> Database Skills
-      </h3>
-      {databaseSkills.map((skill, idx) => {
-        const percent = 75 + idx * 10;
-        return (
-          <div key={idx} className="flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center">{skill.icon}</span>
-            <span className="text-white font-medium w-20 text-xs">{skill.name}</span>
-            <div className="flex-1 relative group cursor-pointer">
-              <div className="w-full h-3 bg-[#3a2a3e] rounded-full overflow-hidden">
-                <motion.div
-                  className="h-3 rounded-full bg-gradient-to-r from-[#a855f7] to-[#6b21a8] shadow-lg"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${percent}%` }}
-                  transition={{ duration: 1 + idx * 0.2 }}
-                ></motion.div>
-              </div>
-              <span className="absolute left-1/2 -translate-x-1/2 -top-8 px-2 py-1 rounded bg-[#2d1333] text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-auto shadow border border-[#a855f7] z-50 whitespace-nowrap">
-                {percent}%
+      <div className="space-y-6">
+        {[
+          { name: "Agentic AI", percent: 85, icon: <i className="fas fa-robot" aria-hidden="true"></i> },
+          { name: "Ethical Hacking", percent: 80, icon: <i className="fas fa-shield-halved" aria-hidden="true"></i> }
+        ].map((spec, i) => (
+          <div key={i} className="space-y-2">
+            <div className="flex justify-between items-center">
+              <span className="text-[10px] font-black text-gray-700 uppercase tracking-widest flex items-center gap-2">
+                <span className="text-xs text-[#713eeb]">{spec.icon}</span>
+                {spec.name}
               </span>
+              <span className="text-base font-black text-[#713eeb]">{spec.percent}%</span>
+            </div>
+            <div className="h-1.5 w-full bg-gray-200/50 rounded-full overflow-hidden">
+              <motion.div 
+                className="h-full bg-[#713eeb] rounded-full"
+                initial={{ width: 0 }}
+                whileInView={{ width: `${spec.percent}%` }}
+                transition={{ duration: 1.5, delay: 0.5 }}
+              />
             </div>
           </div>
-        );
-      })}
+        ))}
+      </div>
     </motion.div>
-
-    {/* Other/Tool Skills */}
-    <motion.div className="flex flex-col gap-2 bg-[#2d1333]/80 rounded-xl p-3 shadow border border-[#a855f7]/40" variants={itemVariants}>
-      <h3 className="text-base font-bold text-[#a855f7] mb-1 flex items-center gap-2">
-        <span className="inline-block w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span> Other Tools
-      </h3>
-      {toolSkills.map((skill, idx) => {
-        const percent = 70 + idx * 10;
-        return (
-          <div key={idx} className="flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center">{skill.icon}</span>
-            <span className="text-white font-medium w-20 text-xs">{skill.name}</span>
-            <div className="flex-1 relative group">
-              <div className="w-full h-3 bg-[#3a2a3e] rounded-full overflow-hidden">
-                <motion.div
-                  className="h-3 rounded-full bg-gradient-to-r from-[#a855f7] to-[#6b21a8] shadow-lg group-hover:opacity-80 cursor-pointer"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${percent}%` }}
-                  transition={{ duration: 1 + idx * 0.2 }}
-                ></motion.div>
-              </div>
-              <span className="absolute left-1/2 -translate-x-1/2 -top-7 px-2 py-1 rounded bg-[#2d1333] text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow border border-[#a855f7] z-10">
-                {percent}%
-              </span>
-            </div>
-          </div>
-        );
-      })}
-    </motion.div>
-
-    {/* Specialized Skills: Ethical Hacking & Agentic AI */}
-    <motion.div className="flex flex-col gap-2 bg-[#2d1333]/80 rounded-xl p-3 shadow border border-[#a855f7]/40 col-span-1 md:col-span-2 lg:col-span-1" variants={itemVariants}>
-      <h3 className="text-base font-bold text-[#a855f7] mb-1 flex items-center gap-2">
-        <span className="inline-block w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span> Specialized Skills
-      </h3>
-      {/* Ethical Hacking */}
-      {(() => {
-        const percent = 85;
-        return (
-          <div className="flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center">
-              {/* Ethical Hacking Icon (shield/lock) */}
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3l7 4v5c0 5.25-3.5 9.74-7 11-3.5-1.26-7-5.75-7-11V7l7-4z" /></svg>
-            </span>
-            <span className="text-white font-medium w-24 text-xs">Ethical Hacking</span>
-            <div className="flex-1 relative group cursor-pointer">
-              <div className="w-full h-3 bg-[#3a2a3e] rounded-full overflow-hidden">
-                <motion.div
-                  className="h-3 rounded-full bg-gradient-to-r from-green-400 to-[#a855f7] shadow-lg"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${percent}%` }}
-                  transition={{ duration: 1.2 }}
-                ></motion.div>
-              </div>
-              <span className="absolute left-1/2 -translate-x-1/2 -top-8 px-2 py-1 rounded bg-[#2d1333] text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-auto shadow border border-[#a855f7] z-50 whitespace-nowrap">
-                {percent}%
-              </span>
-            </div>
-          </div>
-        );
-      })()}
-      {/* Agentic AI */}
-      {(() => {
-        const percent = 80;
-        return (
-          <div className="flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center">
-              {/* Agentic AI Icon (robot/ai) */}
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" strokeWidth="2" /><rect x="9" y="9" width="6" height="6" rx="1" fill="currentColor" /><circle cx="9.5" cy="11.5" r=".75" fill="#fff" /><circle cx="14.5" cy="11.5" r=".75" fill="#fff" /></svg>
-            </span>
-            <span className="text-white font-medium w-24 text-xs">Agentic AI</span>
-            <div className="flex-1 relative group cursor-pointer">
-              <div className="w-full h-3 bg-[#3a2a3e] rounded-full overflow-hidden">
-                <motion.div
-                  className="h-3 rounded-full bg-gradient-to-r from-cyan-400 to-[#a855f7] shadow-lg"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${percent}%` }}
-                  transition={{ duration: 1.2 }}
-                ></motion.div>
-              </div>
-              <span className="absolute left-1/2 -translate-x-1/2 -top-8 px-2 py-1 rounded bg-[#2d1333] text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-auto shadow border border-[#a855f7] z-50 whitespace-nowrap">
-                {percent}%
-              </span>
-            </div>
-          </div>
-        );
-      })()}
-    </motion.div>
-  </motion.div>
+  </div>
 </motion.section>
-
-
-
 
 
       {/* --- Certifications & Courses Section --- */}
-      <motion.section 
-        className="mt-10 mx-auto max-w-6xl"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.h4 
-          className="text-2xl md:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] to-[#a855f7] tracking-wide relative pb-2"
-          variants={sectionTitleVariants}
-        >
-          🎓 Certifications & Courses
-          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-[#6b21a8] to-[#a855f7] rounded-full"></span>
-        </motion.h4>
-        <motion.div 
-          className="mt-4 p-4 md:p-6 bg-[#3a2a3e] rounded-2xl shadow-2xl border border-[#a855f7]/40 flex flex-wrap justify-center gap-4 backdrop-blur-md bg-opacity-80 ring-2 ring-[#a855f7]/30 ring-offset-2 ring-offset-[#2d1333]"
-          style={{ boxShadow: '0 8px 32px 0 rgba(168,85,247,0.25), 0 1.5px 12px 0 rgba(107,33,168,0.15)' }}
-          variants={containerVariants}
-        >
-          {certifications.map((cert, index) => (
-            <motion.div 
-              key={index} 
-              className="flex items-start gap-2 px-2 py-3 bg-[#2d1333] border border-[#a855f7] shadow rounded-xl w-full md:w-[340px] transition-all duration-300 hover:scale-105 hover:shadow-2xl text-xs"
-              variants={itemVariants}
-            >
-              <div className="text-3xl text-[#a855f7] flex-shrink-0">
-                {ICONS.certificate}
-              </div>
-              <div>
-                <h5 className="text-base font-semibold text-gray-100 mb-1">{cert.title}</h5>
-                <p className="text-xs text-gray-400 mb-1">{cert.provider}</p>
-                <a
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-2 py-1 mt-2 rounded-full bg-gradient-to-r from-[#a855f7] via-[#6b21a8] to-[#9333ea] text-white font-bold text-xs shadow-md transition-all duration-200 hover:scale-105 hover:shadow-xl hover:bg-gradient-to-l focus:outline-none focus:ring-2 focus:ring-[#a855f7] focus:ring-offset-2 no-underline"
-                  style={{ letterSpacing: '0.03em' }}
-                >
-                  View Certificate {ICONS.externalLink}
-                </a>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.section>
-
-
-
-      {/* --- Experience Section --- */}
-      <motion.section 
-        className="mt-10 mx-auto max-w-6xl"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.h4 
-          className="text-2xl md:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] to-[#a855f7] tracking-wide relative pb-2"
-          variants={sectionTitleVariants}
-        >
-          Experience
-          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-[#6b21a8] to-[#a855f7] rounded-full"></span>
-        </motion.h4>
-        <motion.div 
-          className="flex flex-col gap-6 mt-4 pb-2"
-          variants={containerVariants}
-        >
-          {experiences.map((exp, index) => (
-            <motion.div 
-              key={index} 
-              className="w-full relative bg-[#3a2a3e] rounded-2xl shadow-md p-6 border-l-8 border-[#a855f7] text-gray-100 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg text-sm backdrop-blur-md ring-2 ring-[#a855f7]/20 ring-offset-2 ring-offset-[#2d1333]"
-              style={{ boxShadow: '0 2px 8px 0 rgba(168,85,247,0.10), 0 1.5px 6px 0 rgba(107,33,168,0.06)' }}
-              variants={itemVariants}
-            >
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#a855f7] via-[#6b21a8] to-[#a855f7] drop-shadow-lg">{exp.role}</h3>
-                <span className="text-xs text-gray-300 bg-[#2d1333]/60 px-3 py-1 rounded-full border border-[#a855f7]/30 font-semibold shadow-sm">{exp.duration}</span>
-              </div>
-              <h4 className="text-base font-bold text-[#a855f7] mb-2">{exp.company}</h4>
-              <p className="text-xs md:text-sm text-gray-200 leading-relaxed mb-3 font-light">{exp.description}</p>
-              <a
-                href={exp.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#a855f7] via-[#6b21a8] to-[#9333ea] text-white font-bold text-xs shadow-md transition-all duration-200 hover:scale-105 hover:shadow-xl hover:bg-gradient-to-l focus:outline-none focus:ring-2 focus:ring-[#a855f7] focus:ring-offset-2 no-underline"
-                style={{ letterSpacing: '0.03em' }}
-              >
-                Learn more {ICONS.externalLink}
-              </a>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.section>
-
-
-      {/* --- Education Qualifications Section --- */}
-        <motion.section 
-      className="mt-10 mx-auto max-w-6xl relative"
+<motion.section 
+  className="mt-8 mx-auto max-w-7xl px-6 bg-white/90 backdrop-blur-sm py-10 rounded-[2rem] shadow-[0_20px_60px_-40px_rgba(113,62,235,0.35)] border border-[#713eeb]/10"
   variants={containerVariants}
   initial="hidden"
-  animate="visible"
+  whileInView="visible"
+  viewport={{ once: true }}
 >
-  <motion.h4 
-    className="text-2xl md:text-3xl m-8 font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] to-[#a855f7] tracking-wide relative pb-2"
-    variants={sectionTitleVariants}
-  >
-    Education Qualifications
-    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-[#6b21a8] to-[#a855f7] rounded-full"></span>
-  </motion.h4>
+  {/* Compact Centered Heading */}
+  <motion.div className="mb-10 text-center" variants={sectionTitleVariants}>
+    <h4 className="text-xl md:text-2xl font-black text-gray-900 tracking-tight uppercase relative inline-block">
+      Certifications
+      <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-[#713eeb] rounded-full"></span>
+    </h4>
+    <p className="text-gray-400 mt-2 font-bold uppercase tracking-widest text-[9px]">Verified Credentials</p>
+  </motion.div>
 
+  {/* Compact Grid */}
   <motion.div 
-    className="relative max-w-7xl w-full mx-auto py-4 md:py-8"
+    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
     variants={containerVariants}
   >
-    {/* Central Timeline Line */}
-    <div className="absolute left-1/2 transform -translate-x-1/2 w-[3px] h-[105%] 
-            bg-gradient-to-b from-[#6b21a8] via-[#9333ea] to-[#a855f7] 
-            shadow-[0_0_10px_rgba(168,85,247,0.7)] rounded-full animate-pulse hidden md:block top-1/2 -translate-y-1/2"></div>
-
-    <div className="flex flex-col space-y-6">
-      {education.map((edu, index) => (
-        <motion.div 
-          key={index} 
-          className={`relative w-full md:w-1/2 md:max-w-2xl ${index % 2 === 0 ? 'md:self-start md:pr-4' : 'md:self-end md:pl-4'}`} 
-          variants={itemVariants}
-        >
-          {/* Connector Circle */}
-          <div className={`hidden md:flex absolute top-5 z-10 ${index % 2 === 0 ? 'right-0 -mr-2.5' : 'left-0 -ml-2.5'}`}>
-            <div className="relative flex items-center justify-center">
-              {/* Outer pulse */}
-              <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#9333ea] to-[#a855f7] shadow-lg shadow-purple-500/50 animate-ping absolute opacity-70"></div>
-              {/* Inner circle with white border */}
-              <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[#6b21a8] to-[#a855f7] border-2 border-white shadow-md"></div>
+    {certifications.map((cert, index) => (
+      <div 
+        key={index} 
+        className="group relative flex flex-col p-5 bg-[#f9fafb] rounded-xl border border-gray-100 hover:border-[#713eeb]/20 hover:bg-white transition-all duration-300"
+      >
+        <div className="relative z-10">
+          {/* Top Row: Mini Icon & Provider */}
+          <div className="flex justify-between items-center mb-4">
+            <div className="text-xl text-[#713eeb]">
+              {ICONS.certificate}
             </div>
+            <span className="px-2 py-0.5 rounded-md bg-white border border-gray-100 text-[9px] font-black text-gray-500 uppercase tracking-tighter">
+              {cert.provider}
+            </span>
           </div>
 
-          {/* Education Card */}
-          <div className="bg-[#3a2a3e] rounded-3xl shadow-2xl p-6 border-2 border-[#a855f7]/30 text-gray-100 transition-all duration-400 hover:scale-[1.04] hover:shadow-2xl backdrop-blur-lg ring-2 ring-[#a855f7]/20 ring-offset-2 ring-offset-[#2d1333]" style={{ boxShadow: '0 8px 32px 0 rgba(168,85,247,0.12), 0 1.5px 12px 0 rgba(107,33,168,0.10)' }}>
-            <div className="flex items-center gap-3 mb-2">
-              <span className="inline-block bg-[#6b21a8] rounded-full p-3 shadow-lg">
-                {/* Graduation cap icon, white for contrast */}
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" className="w-9 h-9"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m-4 0h8" /></svg>
+          {/* Title & Short Description */}
+          <div className="mb-4">
+            <h5 className="text-sm font-bold text-gray-900 leading-tight mb-1 group-hover:text-[#713eeb] transition-colors">
+              {cert.title}
+            </h5>
+            <p className="text-[10px] text-gray-400 font-medium leading-relaxed">
+              Issued by {cert.provider} • Verified achievement.
+            </p>
+          </div>
+
+          {/* Slim Action Link */}
+          <div className="pt-3 border-t border-gray-200/50">
+            <a
+              href={cert.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between w-full text-[9px] font-black uppercase tracking-widest text-gray-900 hover:text-[#713eeb] transition-colors no-underline"
+            >
+              <span>View Credential</span>
+              <span className="text-xs transform group-hover:translate-x-0.5 transition-transform">
+                {ICONS.externalLink}
               </span>
-              <h3 className="text-xl font-extrabold text-white drop-shadow-lg bg-clip-text bg-gradient-to-r from-[#a855f7] via-[#6b21a8] to-[#a855f7]">{edu.title}</h3>
-            </div>
-            <h4 className="text-base font-bold text-[#a855f7] mb-1 bg-clip-text bg-gradient-to-r from-[#a855f7] to-[#6b21a8]">{edu.institution}</h4>
-            <span className="text-xs text-white bg-gradient-to-r from-[#a855f7]/60 to-[#6b21a8]/60 px-4 py-1 rounded-full border border-[#a855f7]/30 font-semibold shadow-md mb-2 inline-block">{edu.duration}</span>
-            <p className="text-sm text-gray-200 mt-2 font-normal leading-relaxed tracking-wide bg-[#2d1333]/40 rounded-lg p-2 shadow">{edu.description}</p>
+            </a>
           </div>
-        </motion.div>
-      ))}
-    </div>
+        </div>
+      </div>
+    ))}
   </motion.div>
 </motion.section>
 
 
+      {/* --- Experience Section --- */}
+<InternshipTraining/>
+
+
+{/* --- Education Qualifications Section --- */}
+<motion.section 
+  className="mt-16 mx-auto max-w-7xl px-6 bg-white/90 backdrop-blur-sm py-12 rounded-3xl shadow-[0_20px_60px_-40px_rgba(113,62,235,0.35)] border border-[#713eeb]/10" // Reduced outermost width
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+>
+  {/* Centered Main Title */}
+  <motion.div className="mb-12 text-center" variants={sectionTitleVariants}>
+    <h4 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight uppercase relative inline-block">
+      Academic Foundation
+      <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-10 h-1 bg-[#713eeb] rounded-full"></span>
+    </h4>
+  </motion.div>
+
+  {/* Compact & Focused Timeline Container */}
+  <div className="relative border-l border-[#713eeb]/20 ml-4 md:ml-8 space-y-4"> 
+    {education.map((edu, index) => (
+      <motion.div 
+        key={index} 
+        className="relative pl-6 md:pl-10"
+        variants={itemVariants}
+      >
+        {/* Minimal Timeline Dot */}
+        <div className="absolute -left-[5.5px] top-6 w-2.5 h-2.5 rounded-full bg-white border-2 border-[#713eeb] z-10" />
+        
+        {/* Full-Width Card within the narrowed container */}
+        <motion.div 
+          className="group relative bg-[#f9fafb] rounded-2xl p-4 md:p-5 border border-gray-100 shadow-sm transition-all duration-300"
+        >
+          <div className="flex items-center gap-5">
+            {/* Small Icon */}
+            <div className="shrink-0 w-9 h-9 flex items-center justify-center bg-white rounded-lg border border-gray-100 text-[#713eeb] transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m-4 0h8" />
+              </svg>
+            </div>
+
+            {/* Content Group */}
+            <div className="flex-grow">
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-1">
+                <div className="space-y-0.5">
+                  {/* Line 1: Degree Title */}
+                  <h3 className="text-sm md:text-base font-bold text-gray-900 leading-tight">
+                    {edu.title}
+                  </h3>
+                  
+                  {/* Line 2: Institution Name */}
+                  <div className="text-[10px] md:text-[11px] font-bold text-[#713eeb] uppercase tracking-wider">
+                    {edu.institution}
+                  </div>
+                </div>
+
+                {/* Duration Badge */}
+                <div className="shrink-0 mt-1 md:mt-0">
+                  <span className="text-[9px] font-black text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
+                    {edu.duration}
+                  </span>
+                </div>
+              </div>
+
+              {/* Line 3: Description */}
+              <p className="text-[11px] md:text-xs text-gray-500 mt-2 line-clamp-1 transition-all duration-300">
+                {edu.description}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    ))}
+  </div>
+</motion.section>
       
     </div>
   );
