@@ -1,29 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import mypic from '../image/mypic.jpg'
+import { FaRocket } from 'react-icons/fa';
+import mypic from '../image/mypic.jpg';
+import Magnetic from './Magnetic';
 
 const SvgPhone = (props) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" fill="currentColor">
     <path d="M16.5 13.5l-2.493 2.493a1.5 1.5 0 01-2.121 0l-.707-.707a1.5 1.5 0 010-2.121l2.493-2.493a1.5 1.5 0 012.121 0l.707.707a1.5 1.5 0 010 2.121zM9.5 7.5l-2.493-2.493a1.5 1.5 0 00-2.121 0l-.707.707a1.5 1.5 0 000 2.121l2.493 2.493a1.5 1.5 0 002.121 0l.707-.707a1.5 1.5 0 000-2.121zM12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zM12 20a8 8 0 118-8 8.009 8.009 0 01-8 8z"/>
   </svg>
 );
 const SvgEnvelope = (props) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" fill="currentColor">
     <path d="M2.5 5.5a2 2 0 012-2h15a2 2 0 012 2v13a2 2 0 01-2 2h-15a2 2 0 01-2-2v-13zM4.5 5.5v.421l7.5 5.25 7.5-5.25v-.421h-15zM4.5 7.747v10.753h15v-10.753l-7.5 5.25-7.5-5.25z"/>
   </svg>
 );
 const SvgLinkedin = (props) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" fill="currentColor">
     <path d="M20.916 2.052H3.084a.5.5 0 00-.5.5v17.896a.5.5 0 00.5.5h17.832a.5.5 0 00.5-.5V2.552a.5.5 0 00-.5-.5zM8.334 18.066H5.43v-9.52h2.904v9.52zM6.882 7.15c-.94 0-1.705-.764-1.705-1.705s.764-1.705 1.705-1.705 1.705.764 1.705 1.705-.764 1.705-1.705 1.705zm12.036 10.916h-2.903v-4.75c0-1.13-.021-2.584-1.575-2.584-1.575 0-1.815 1.233-1.815 2.502v4.832H9.076v-9.52h2.784v1.302h.04c.387-.74 1.332-1.517 2.748-1.517 2.946 0 3.491 1.93 3.491 4.437v5.298z"/>
   </svg>
 );
 const SvgGithub = (props) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 1 24 24" fill="currentColor">
     <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.758-1.333-1.758-1.09-.745.083-.73.083-.73 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.492.998.108-.775.42-1.305.762-1.605-2.665-.3-5.467-1.332-5.467-5.93 0-1.31.465-2.38 1.235-3.22-.125-.3-.535-1.523.117-3.176 0 0 1.005-.322 3.3 1.23.957-.266 1.983-.4 3.003-.404 1.02.004 2.046.138 3.005.404 2.29-1.552 3.295-1.23 3.295-1.23.65 1.653.24 2.876.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.62-5.474 5.92.43.37.81 1.096.81 2.215 0 1.605-.015 2.89-.015 3.283 0 .32.21.693.825.575C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12z"/>
   </svg>
 );
 
 const Home = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const profile = {
     name: "Abhishek",
     titleOptions: ["Full Stack Developer", "Front End Developer", "Back End Developer"],
@@ -65,85 +77,150 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [typedText, isDeleting, currentTitleIndex, profile.titleOptions, typingSpeed]);
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 },
-    },
+      transition: { staggerChildren: 0.3 }
+    }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+    hidden: { opacity: 0, scale: 0.8, y: 30 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.165, 0.84, 0.44, 1] }
+    }
   };
 
   const getIconColor = (name) => {
     switch (name) {
       case "LinkedIn": return "#0077B5";
-      case "GitHub": return "#333";
+      case "GitHub": return "#ffffff";
       case "Phone": return "#25D366";
       case "Email": return "#EA4335";
-      default: return "#555";
+      default: return "#ffffff";
     }
   };
 
   return (
-    <div className="home-section w-full dark:bg-[#2d1333] dark:text-[#e0e0e0]">
-      <div className="w-full min-h-screen pt-5 flex flex-col items-center font-inter p-16 bg-[#f5f5f5] text-[#333333] overflow-hidden dark:bg-[#2d1333] dark:text-[#e0e0e0]">
-      <motion.div
-        className="w-full flex flex-col lg:flex-row justify-center items-center mt-20"
-        variants={cardVariants}
+    <div className="relative w-full min-h-screen flex items-center justify-center p-6 md:p-12 lg:p-24 overflow-hidden mesh-gradient dark:bg-[#020617]">
+      {/* Dynamic Parallax Background Elements */}
+      <motion.div 
+        className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-600/10 blur-[130px] rounded-full"
+        animate={{
+          x: (mousePosition.x - window.innerWidth / 2) * 0.05,
+          y: (mousePosition.y - window.innerHeight / 2) * 0.05,
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-pink-600/10 blur-[130px] rounded-full"
+        animate={{
+          x: (mousePosition.x - window.innerWidth / 2) * -0.05,
+          y: (mousePosition.y - window.innerHeight / 2) * -0.05,
+        }}
+      />
+
+      {/* Floating Orbital Rings */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full pointer-events-none hidden lg:block"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full pointer-events-none hidden lg:block"></div>
+
+      <motion.div 
+        className="relative z-10 w-full max-w-7xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20"
+        variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Profile Picture Section with Blob Effect */}
-        <motion.div
-          className="w-full lg:w-1/3 flex justify-center p-4"
+        {/* Left Column: Image with unique background */}
+        <motion.div 
+          className="relative group w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96"
           variants={itemVariants}
+          style={{
+            x: (mousePosition.x - window.innerWidth / 2) * 0.02,
+            y: (mousePosition.y - window.innerHeight / 2) * 0.02,
+          }}
         >
-          <div className="relative group">
-            {/* Animated Glow Background */}
-            <div className="absolute inset-0  opacity-30 blur-2xl group-hover:opacity-50 transition-opacity duration-500 animate-blob"></div>
-            
-            <img
-              src={mypic}
-              alt="Profile"
-              className="w-48 h-48 sm:w-64 sm:h-64 object-cover border-4 border-white shadow-2xl transition-all duration-700 ease-in-out hover:scale-105"
-              style={{
-                borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-                animation: "morph 8s ease-in-out infinite"
-              }}
-            />
+          {/* Rotating frame */}
+          <div className="absolute inset-0 border-2 border-dashed border-purple-500/30 rounded-full animate-[spin_25s_linear_infinite]"></div>
+          
+          <div className="relative w-full h-full p-4">
+             <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-pink-600 rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] animate-[morph_15s_ease-in-out_infinite] blur-md opacity-25"></div>
+             
+             <motion.div 
+               className="relative w-full h-full overflow-hidden shadow-2xl border-4 border-white/10"
+               style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
+               whileHover={{ scale: 1.05 }}
+               transition={{ duration: 0.5 }}
+             >
+                <img 
+                  src={mypic} 
+                  alt={profile.name} 
+                  className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700" 
+                />
+             </motion.div>
           </div>
         </motion.div>
 
-        {/* Content Section */}
-        <div className="w-full lg:w-2/3 text-center lg:text-left lg:pl-12">
-          <motion.div variants={itemVariants}>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] to-[#4f46e5]">
-              Hi, I'm {profile.name}
+        <div className="flex-1 text-center space-y-5">
+          <motion.div variants={itemVariants} className="space-y-4">
+            <h2 className="text-purple-500 font-extrabold tracking-[0.4em] uppercase text-xs md:text-sm">
+              Welcome to my world
+            </h2>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 dark:text-white leading-tight">
+              I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-accent animate-gradient">
+                {profile.name}
+              </span>
             </h1>
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium mb-4 text-[#555555] dark:text-[#cbd5e1] min-h-[3rem]">
-              {typedText}
-              <span className="inline-block w-0.5 h-6 ml-1 bg-[#7c3aed] animate-blink"></span>
-            </h3>
+            <div className="inline-block px-6 py-2 glass-dark rounded-full">
+              <h3 className="text-xl md:text-2xl font-bold text-slate-700 dark:text-slate-300">
+                {typedText}
+                <span className="inline-block w-1 h-6 ml-1 bg-purple-500 animate-blink"></span>
+              </h3>
+            </div>
           </motion.div>
 
-          <motion.p
-            className="text-lg text-[#666666] dark:text-[#cbd5e1] leading-relaxed mb-8 max-w-prose mx-auto lg:mx-0"
+          <motion.p 
             variants={itemVariants}
+            className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium pt-1"
           >
             {profile.bio}
           </motion.p>
-          
-          <motion.div
-            className="flex flex-wrap justify-center lg:justify-center gap-5 mb-10"
+
+
+          <motion.div 
             variants={itemVariants}
+            className="flex flex-wrap items-center justify-center gap-6 pt-6"
+          >
+            <Magnetic>
+              <a 
+                href="#projects" 
+                className="group px-10 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-[length:200%_auto] text-white rounded-2xl font-black uppercase tracking-[0.2em] shadow-[0_20px_40px_rgba(124,58,237,0.3)] hover:shadow-purple-500/50 hover:bg-right transition-all duration-700 no-underline text-xs flex items-center gap-3"
+              >
+                <FaRocket className="group-hover:rotate-12 transition-transform" /> 
+                <span>Explore Works</span>
+              </a>
+            </Magnetic>
+
+            <Magnetic>
+              <a 
+                href="YOUR_CV_LINK_HERE"
+                className="px-10 py-4 bg-white/5 dark:bg-white/5 text-slate-900 dark:text-white border border-slate-300 dark:border-white/10 rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 no-underline text-xs flex items-center gap-3 backdrop-blur-md"
+              >
+                <div className="w-[2px] h-4 bg-purple-500"></div>
+                <span>Download CV</span>
+              </a>
+            </Magnetic>
+          </motion.div>
+
+          {/* Social Links with hover effects */}
+          <motion.div 
+            variants={itemVariants}
+            className="flex items-center justify-center gap-6 pt-3"
           >
             {profile.contact.map((item, i) => (
               <a
@@ -151,32 +228,42 @@ const Home = () => {
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 flex items-center justify-center rounded-xl bg-gray-50 border border-gray-100 shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-1 transition-all duration-300 ease-in-out group dark:bg-[#2d1333] dark:border-white/10 dark:hover:bg-[#2d1333]"
+                className="group relative w-12 h-12 flex items-center justify-center bg-slate-900 dark:bg-white/5 rounded-xl overflow-hidden shadow-lg transition-all duration-500"
               >
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ backgroundColor: getIconColor(item.name) }}
+                ></div>
                 {React.cloneElement(item.icon, {
-                  className: `w-6 h-6 transition-colors duration-300`,
+                  className: `relative z-10 w-5 h-5 transition-all duration-500 group-hover:scale-125`,
                   style: { color: getIconColor(item.name) }
                 })}
+                {/* Overlay White on hover for better contrast */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                   {React.cloneElement(item.icon, {
+                    className: `w-5 h-5 text-white`,
+                  })}
+                </div>
               </a>
             ))}
           </motion.div>
 
-          <motion.div
-            className="flex flex-wrap justify-center lg:justify-center gap-4"
+          {/* Professional Stats */}
+          <motion.div 
             variants={itemVariants}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-slate-200 dark:border-white/5 mt-10"
           >
-            <a
-              href="YOUR_CV_LINK_HERE"
-              className="bg-[#7c3aed] text-white px-10 py-3.5 rounded-full font-bold uppercase tracking-wider shadow-lg shadow-purple-200 hover:bg-[#6d28d9] transition-all duration-300 transform hover:scale-105 no-underline"
-            >
-              Download CV
-            </a>
-            <a
-              href="mailto:abhishekydv2408@gmail.com"
-              className="border-2 border-[#7c3aed] text-[#7c3aed] px-10 py-3 rounded-full font-bold uppercase tracking-wider hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 no-underline"
-            >
-              Hire Me
-            </a>
+            {[
+              { num: "50+", label: "Projects Completed" },
+              { num: "15+", label: "Tech Stack" },
+              { num: "5+", label: "Open Source" },
+              { num: "100%", label: "Dedication" }
+            ].map((stat, i) => (
+              <div key={i} className="space-y-1">
+                <h4 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white">{stat.num}</h4>
+                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em]">{stat.label}</p>
+              </div>
+            ))}
           </motion.div>
         </div>
       </motion.div>
@@ -186,25 +273,24 @@ const Home = () => {
         .animate-blink { animation: blink 0.75s step-end infinite; }
 
         @keyframes morph {
-          0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-          50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-          100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+          0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+          33% { border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%; }
+          66% { border-radius: 67% 33% 47% 53% / 37% 20% 80% 63%; }
         }
 
-        @keyframes blob-float {
-          0% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(5px, -10px) scale(1.05); }
-          66% { transform: translate(-5px, 10px) scale(0.95); }
-          100% { transform: translate(0px, 0px) scale(1); }
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient-move 5s ease infinite;
         }
 
-        .animate-blob {
-          animation: blob-float 7s infinite alternate;
+        @keyframes gradient-move {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
       `}</style>
-      </div>
     </div>
   );
 };
 
-export default Home;
+export default Home;

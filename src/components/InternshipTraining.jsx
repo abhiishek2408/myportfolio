@@ -1,114 +1,112 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaExternalLinkAlt, FaCheckCircle, FaBriefcase, FaGraduationCap } from 'react-icons/fa';
 
-// Dummy Data Object for Students
 const defaultExperiences = [
-//   {
-//     role: "Full Stack Web Development Intern",
-//     company: "Tech Solutions Pvt. Ltd.",
-//     duration: "June 2025 - August 2025",
-//     description: "Worked on building responsive UI components using React and integrated RESTful APIs with Node.js. Improved application performance by 20% through code optimization.",
-//     link: "https://certificate-link.com"
-//   },
   {
-  role: "Data Structures & Algorithms Training",
-  company: "GeeksforGeeks",
-  duration: "3 Months (2025)", // Apni date ke hisaab se change karein
-  description: "Comprehensive training on Arrays, Linked Lists, Trees, and Graphs. Solved 200+ problems on GFG portal and mastered space-time complexity analysis.",
-  link: "https://auth.geeksforgeeks.org/user/your_username" // Aap apni GFG profile ka link bhi de sakte hain
-},
-//   {
-//     role: "Java Programming Training",
-//     company: "Coding Academy",
-//     duration: "Jan 2025 - March 2025",
-//     description: "Completed an intensive 3-month certification in Advanced Java and Data Structures. Solved 100+ algorithmic problems and built a desktop-based library management tool.",
-//     link: "#"
-//   },
-//   {
-//     role: "Open Source Contributor",
-//     company: "GitHub Community",
-//     duration: "2024 - Present",
-//     description: "Actively contributing to various JavaScript-based open source projects. Fixed minor bugs and improved documentation for community-driven UI libraries.",
-//     link: "https://github.com"
-//   }
+    role: "Full Stack Development Trainee",
+    company: "Coding Ninjas",
+    duration: "Jan 2025 - Present",
+    description: "Intensive training in MERN stack, database design, and scalable architecture. Solved 300+ algorithmic challenges and built production-ready web applications.",
+    link: "#",
+    type: "training"
+  },
+  {
+    role: "Data Structures & Algorithms",
+    company: "GeeksforGeeks",
+    duration: "3 Months (2024)",
+    description: "Mastered core computer science concepts including advanced trees, graphs, and dynamic programming. Achieved top ranks in competitive coding contests.",
+    link: "https://auth.geeksforgeeks.org/user/your_username",
+    type: "training"
+  },
+  {
+    role: "Open Source Contributor",
+    company: "GitHub Community",
+    duration: "2024 - Present",
+    description: "Collaborating with global developers to improve UI libraries and fix security vulnerabilities in JavaScript-based open source ecosystems.",
+    link: "https://github.com/abhiishek2408",
+    type: "experience"
+  }
 ];
 
 const InternshipTraining = ({ 
-  experiences = defaultExperiences, // Uses dummy data if no prop is passed
+  experiences = defaultExperiences,
   containerVariants, 
-  itemVariants, 
-  sectionTitleVariants, 
-  ICONS = { externalLink: <i className="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> } // Fallback icon
+  itemVariants,
 }) => {
   return (
     <motion.section 
-      className="mt-8 mx-auto max-w-7xl px-6 bg-white/90 backdrop-blur-sm py-10 rounded-[2rem] shadow-[0_20px_60px_-40px_rgba(113,62,235,0.35)] border border-[#713eeb]/10" 
+      className="mt-8 w-full"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
     >
-      {/* Header Section */}
-      <motion.div className="mb-8 text-center" variants={sectionTitleVariants}>
-        <h4 className="text-xl md:text-2xl font-black text-gray-900 tracking-tight uppercase relative inline-block">
-          Internship & Training
-          <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-[#713eeb] rounded-full"></span>
-        </h4>
-        <p className="text-gray-400 mt-2 font-bold uppercase tracking-widest text-[9px]">
-          Professional Learning & Hands-on Experience
-        </p>
-      </motion.div>
+      <div className="text-center mb-12 space-y-4">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200 dark:bg-white/5 text-slate-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">
+          <FaBriefcase /> Industry Exposure
+        </div>
+        <h3 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
+          Professional <span className="text-purple-600">Journey</span>
+        </h3>
+        <div className="w-20 h-1 bg-purple-600 mx-auto rounded-full"></div>
+      </div>
 
-      {/* Vertical Timeline */}
-      <div className="relative border-l border-[#713eeb]/20 ml-4 md:ml-10 space-y-4">
+      <div className="relative space-y-12">
+        {/* Vertical Line - Black/Dark on light bg, subtle white on dark bg */}
+        <div className="absolute left-[20px] lg:left-1/2 lg:-translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-slate-900 dark:via-white to-transparent"></div>
+
         {experiences.map((exp, index) => (
           <motion.div 
-            key={index} 
-            className="relative pl-6 md:pl-12"
+            key={index}
             variants={itemVariants}
+            className={`flex flex-col lg:flex-row items-center gap-8 ${index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}
           >
-            {/* Timeline Indicator Dot */}
-            <div className="absolute -left-[5.5px] top-5 w-2.5 h-2.5 rounded-full bg-white border-2 border-[#713eeb] z-10" />
-            
-            {/* Compact Card Content */}
-            <div className="relative bg-[#f9fafb] rounded-xl p-5 border border-gray-100 hover:border-[#713eeb]/20 hover:bg-white transition-all duration-300">
-              <div className="flex flex-col md:flex-row md:items-start justify-between gap-2 mb-3">
-                <div>
-                  <h3 className="text-sm md:text-base font-bold text-gray-900 leading-tight">
-                    {exp.role}
-                  </h3>
-                  <h4 className="text-[10px] md:text-[11px] font-extrabold text-[#713eeb] uppercase tracking-wider mt-0.5">
-                    @ {exp.company}
-                  </h4>
+            {/* Connection Point - Dark on light bg */}
+            <div className="absolute left-[20px] lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 dark:bg-white border-4 border-white lg:border-purple-600 z-20 shadow-none ring-2 ring-slate-200 dark:ring-white transition-transform hover:scale-125"></div>
+
+            <div className="w-full lg:w-1/2 pl-12 lg:pl-0">
+              <div className="p-8 md:p-10 bg-slate-100 dark:bg-white/5 bglass-dark rounded-[2.5rem] border border-slate-400 dark:border-white/30 hover:border-purple-500/30 transition-all duration-500 group relative overflow-hidden shadow-none">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/5 blur-3xl rounded-full group-hover:bg-purple-600/10 transition-colors"></div>
+                
+                <div className="flex justify-between items-start mb-6">
+                  <div className={`p-4 rounded-2xl ${exp.type === 'experience' ? 'bg-blue-500/10 text-blue-500' : 'bg-purple-500/10 text-purple-500'} text-xl`}>
+                    {exp.type === 'experience' ? <FaBriefcase /> : <FaGraduationCap />}
+                  </div>
+                  <span className="text-[9px] font-black text-slate-400 bg-slate-100 dark:bg-white/5 px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 uppercase tracking-widest">
+                    {exp.duration}
+                  </span>
                 </div>
 
-                <span className="shrink-0 text-[9px] font-black text-gray-400 bg-white px-2 py-1 rounded border border-gray-100 uppercase tracking-tighter">
-                  {exp.duration}
-                </span>
-              </div>
+                <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-purple-500 transition-colors">
+                  {exp.role}
+                </h4>
+                <p className="text-pink-600 font-black text-[10px] uppercase tracking-[0.2em] mb-6">
+                  @ {exp.company}
+                </p>
+                
+                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed mb-8">
+                  {exp.description}
+                </p>
 
-              <p className="text-[11px] md:text-xs text-gray-500 leading-relaxed max-w-5xl mb-4">
-                {exp.description}
-              </p>
-
-              {/* Action Footer */}
-              <div className="pt-3 border-t border-gray-200/40 flex items-center justify-between">
-                <a 
-                  href={exp.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="group flex items-center gap-1 text-[9px] font-black uppercase tracking-widest text-gray-900 hover:text-[#713eeb] no-underline transition-colors"
-                >
-                  View Details 
-                  <span className="text-xs transform group-hover:translate-x-1 transition-transform">
-                    {ICONS.externalLink}
-                  </span>
-                </a>
-                <span className="text-[8px] font-bold text-gray-300 uppercase tracking-widest">
-                  Training Verified
-                </span>
+                <div className="flex justify-between items-center pt-6 border-t border-slate-100 dark:border-white/5">
+                  <a 
+                    href={exp.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-slate-900 dark:text-white font-black text-[9px] uppercase tracking-widest no-underline group-hover:text-purple-500 transition-colors"
+                  >
+                    View Credential <FaExternalLinkAlt />
+                  </a>
+                  <div className="flex items-center gap-2 text-green-500 font-black text-[9px] uppercase tracking-widest">
+                    <FaCheckCircle /> Verified
+                  </div>
+                </div>
               </div>
             </div>
+            
+            {/* Spacer for Desktop */}
+            <div className="hidden lg:block lg:w-1/2"></div>
           </motion.div>
         ))}
       </div>

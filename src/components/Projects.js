@@ -1,136 +1,198 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt, FaCode } from "react-icons/fa";
+import Magnetic from "./Magnetic";
 import newsWeb from "../image/NewsWeb.png";
 import RestroWeb from "../image/RestroWeb.png";
 import Lms from "../image/Library.jpeg";
 import PuzzleApp from "../image/Puzzle.jpg";
 
-const PROJECTS_IMAGES = {
-  restaurant: RestroWeb,
-  news: newsWeb,
-  puzzle: PuzzleApp,
-  library: Lms,
-};
-
-const GITHUB_ICON = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.417 2.864 8.163 6.837 9.489.5.092.682-.218.682-.483 0-.237-.008-.867-.012-1.701-2.782.605-3.37-1.341-3.37-1.341-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.531 1.029 1.531 1.029.892 1.528 2.341 1.085 2.91.829.091-.644.35-1.085.637-1.336-2.22-.252-4.555-1.109-4.555-4.935 0-1.089.389-1.979 1.024-2.674-.102-.252-.444-1.264.097-2.637 0 0 .835-.269 2.732 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.114 2.504.331 1.896-1.294 2.731-1.025 2.731-1.025.542 1.373.201 2.385.098 2.637.636.695 1.023 1.585 1.023 2.674 0 3.834-2.339 4.679-4.566 4.925.359.31.678.921.678 1.854 0 1.336-.012 2.417-.012 2.744 0 .267.18.579.688.481C19.14 20.16 22 16.417 22 12 22 6.477 17.523 2 12 2z" />
-  </svg>
-);
-
-const LIVE_ICON = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59L8.71 13.71l1.41 1.41L19 6.41V10h2V3h-7z" />
-  </svg>
-);
-
 const projects = [
   {
-    title: "Restaurant Management System",
-    techStack: ["React", "PHP", "MySQL"],
-    image: PROJECTS_IMAGES.restaurant,
-    github: "https://github.com/abhiishek2408/Restaurant-Management-System-MERN-Stack",
-    live: "https://restaurant-management-system-mern-s.vercel.app/user",
-  },
-  {
-    title: "Digital News Platform",
-    techStack: ["React", "Node", "MongoDB"],
-    image: PROJECTS_IMAGES.news,
+    title: "Eco-News Platform",
+    category: "Full Stack Development",
+    tech: ["React", "Node.js", "MongoDB"],
+    description: "A high-performance news platform with real-time updates and seamless user experience.",
+    image: newsWeb,
     github: "https://github.com/abhiishek2408/online-news-platform",
-    live: "https://online-news-platform.vercel.app/user/dashboard",
+    live: "#",
+    color: "from-blue-600 to-cyan-500"
   },
   {
-    title: "Puzzle Mobile App",
-    techStack: ["React Native", "Express"],
-    image: PROJECTS_IMAGES.puzzle,
+    title: "DineSmart System",
+    category: "Enterprise Solution",
+    tech: ["React", "PHP", "MySQL"],
+    description: "An integrated restaurant management system featuring smart ordering and admin dashboards.",
+    image: RestroWeb,
+    github: "https://github.com/abhiishek2408/Restaurant-Management-System-MERN-Stack",
+    live: "#",
+    color: "from-purple-600 to-pink-500"
+  },
+  {
+    title: "Eduzzle Learning",
+    category: "Mobile Application",
+    tech: ["React Native", "Express"],
+    description: "Interactive educational puzzles designed to enhance critical thinking skills in young learners.",
+    image: PuzzleApp,
     github: "https://github.com/abhiishek2408/EduzzleApp-React-Native",
-    live: "https://github.com/abhiishek2408/EduzzleApp-React-Native",
+    live: "#",
+    color: "from-orange-600 to-red-500"
   },
   {
-    title: "Library Management System",
-    techStack: ["Laravel", "Tailwind", "MySQL"],
-    image: PROJECTS_IMAGES.library,
+    title: "LibriTrack",
+    category: "Management System",
+    tech: ["Laravel", "Blade", "MySQL"],
+    description: "A robust library management system with specialized roles and activity tracking.",
+    image: Lms,
     github: "https://github.com/abhiishek2408/Library-management-system",
-    live: "https://github.com/abhiishek2408/Library-management-system",
+    live: "#",
+    color: "from-emerald-600 to-teal-500"
   },
 ];
 
 const Projects = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
+  };
+
   return (
-    <div className="projects-section w-full py-6 dark:bg-[#2d1333] dark:text-[#e0e0e0]">
-      <motion.section 
-        className="mt-8 mx-auto max-w-7xl px-6 bg-white/90 backdrop-blur-sm py-10 rounded-[2rem] shadow-[0_20px_60px_-40px_rgba(113,62,235,0.35)] border border-[#713eeb]/10"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-      {/* Compact Title */}
-      <div className="text-center mb-10 relative">
-        <h4 className="text-xl md:text-2xl font-black text-gray-900 tracking-tight uppercase relative inline-block">
-          Portfolio Projects
-          <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-10 h-0.5 bg-[#713eeb] rounded-full"></span>
-        </h4>
-        <p className="text-gray-400 mt-2 font-bold uppercase tracking-widest text-[9px]">Building Digital Solutions</p>
-      </div>
+    <section id="projects" className="relative w-full py-10 bg-slate-50 dark:bg-[#020617] transition-colors duration-500">
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.05)_0,transparent_70%)]"></div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="group relative flex flex-col bg-[#f9fafb] rounded-xl border border-gray-100 overflow-hidden hover:border-[#713eeb]/30 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
-          >
-            {/* Project Image - Reduced Height */}
-            <div className="relative h-32 overflow-hidden">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-[#713eeb]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-
-            {/* Content Container */}
-            <div className="p-4 flex flex-col flex-grow">
-              <h3 className="text-sm font-bold text-gray-900 leading-tight mb-2 group-hover:text-[#713eeb] transition-colors">
-                {project.title}
-              </h3>
-
-              {/* Tech Stack - Single Line Compact */}
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {project.techStack.map((tech, i) => (
-                  <span key={i} className="text-[9px] font-black uppercase text-[#713eeb]/70 bg-[#713eeb]/5 px-2 py-0.5 rounded">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Action Buttons - Pushed to bottom */}
-              <div className="mt-auto pt-3 border-t border-gray-200/50 flex gap-3">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-[10px] font-black text-gray-800 hover:text-[#713eeb] transition-colors uppercase no-underline"
-                >
-                  {GITHUB_ICON} Code
-                </a>
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-[10px] font-black text-gray-800 hover:text-[#713eeb] transition-colors uppercase no-underline"
-                >
-                  {LIVE_ICON} Live
-                </a>
-              </div>
-            </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div 
+          className="text-center mb-12 space-y-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200 dark:bg-white/5 text-slate-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">
+            <FaCode /> Featured Labs
           </div>
-        ))}
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white leading-tight">
+            Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Creations</span>
+          </h2>
+          <p className="max-w-2xl mx-auto text-slate-500 font-medium">
+            Explore a collection of engineered solutions focused on performance, scalability, and user-centric design.
+          </p>
+        </motion.div>
+
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {projects.map((project, i) => (
+            <motion.div 
+              key={i} 
+              variants={cardVariants}
+              whileHover={{ y: -15 }}
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+                e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+              }}
+              className="group relative h-[520px] bg-slate-900 rounded-[3.5rem] border border-white/5 overflow-hidden transition-all duration-700 shadow-2xl"
+            >
+              {/* Image Background with zoom and luminosity */}
+              <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-1000"
+                />
+              </div>
+
+              {/* Spotlight Effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none bg-[radial-gradient(circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(124,58,237,0.15)_0%,transparent_50%)]"></div>
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+
+              {/* Project Status Tag */}
+              <div className={`absolute top-10 left-10 py-2.5 px-5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl transition-all duration-500 group-hover:border-purple-500/50`}>
+                <span className={`inline-block w-1.5 h-1.5 rounded-full bg-gradient-to-r ${project.color} mr-2 animate-pulse`}></span>
+                {project.category}
+              </div>
+
+              {/* Content Overlay */}
+              <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                <div className="space-y-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-4xl font-black text-white leading-none">{project.title}</h3>
+                  <p className="text-slate-400 text-base font-medium line-clamp-2 max-w-md">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2.5 pt-2">
+                    {project.tech.map((t, ti) => (
+                      <span key={ti} className="text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl bg-white/5 text-slate-300 border border-white/10 group-hover:border-purple-500/30 transition-colors">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-8 pt-6">
+                    <Magnetic>
+                      <a 
+                        href={project.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-white no-underline font-black text-[10px] uppercase tracking-[0.2em] hover:text-purple-400 transition-colors"
+                      >
+                        <FaGithub className="text-lg" /> Source Code
+                      </a>
+                    </Magnetic>
+                    <Magnetic>
+                      <a 
+                        href={project.live} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-white no-underline font-black text-[10px] uppercase tracking-[0.2em] hover:text-pink-400 transition-colors"
+                      >
+                        <FaExternalLinkAlt className="text-sm" /> Live Demo
+                      </a>
+                    </Magnetic>
+                  </div>
+                </div>
+              </div>
+
+              {/* Glowing side accent */}
+              <div className={`absolute bottom-0 right-0 w-2.5 h-0 group-hover:h-full bg-gradient-to-t ${project.color} transition-all duration-1000 ease-out shadow-[0_0_30px_rgba(124,58,237,0.3)]`}></div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Global Action */}
+        <motion.div 
+          className="mt-16 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="p-8 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[2.5rem] border border-slate-400 dark:border-white/30 mt-8">
+            <a 
+              href="https://github.com/abhiishek2408" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-3.5 glass-dark rounded-2xl border border-white/5 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] hover:bg-white dark:hover:bg-slate-800 transition-all no-underline"
+            >
+              <FaGithub size={16} /> View More on GitHub
+            </a>
+          </div>
+        </motion.div>
       </div>
-      </motion.section>
-    </div>
+    </section>
   );
 };
 
-export default Projects;
+export default Projects;

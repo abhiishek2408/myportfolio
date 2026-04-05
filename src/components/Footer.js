@@ -1,47 +1,113 @@
 import React from 'react';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaChevronRight, FaHeart } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { icon: <FaGithub />, href: "https://github.com/abhiishek2408", label: "GitHub" },
+    { icon: <FaLinkedin />, href: "https://linkedin.com/in/abhishek", label: "LinkedIn" },
+    { icon: <FaTwitter />, href: "https://twitter.com/abhishek", label: "Twitter" },
+    { icon: <FaEnvelope />, href: "mailto:abhishekydv2408@gmail.com", label: "Email" }
+  ];
+
+  const quickLinks = [
+    { name: "Evolution", href: "#about" },
+    { name: "Creations", href: "#projects" },
+    { name: "Insights", href: "#blog" },
+    { name: "Connect", href: "#contact" }
+  ];
+
   return (
-    <footer className="bg-[#2d1333] border-t border-white/10 text-[#e0e0e0] font-inter py-12 ">
-      <div className="max-w-6xl  mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-        
-        {/* Left: About / Brand */}
-        <div className="flex flex-col gap-2 text-center md:text-left">
-          <h2 className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#6b21a8] to-[#a855f7]">
-            Abhishek Yadav
-          </h2>
-          <p className="text-gray-400 text-sm md:text-base">
-            Full Stack Developer | React & Laravel | Always learning & building
+    <footer className="relative w-full py-20 bg-slate-950 border-t border-white/5 overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom,rgba(124,58,237,0.05)_0,transparent_70%)]"></div>
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          
+          {/* Logo & Manifesto */}
+          <div className="lg:col-span-5 space-y-8">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              <h2 className="text-3xl font-black text-white">
+                Abhishek<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">.</span>
+              </h2>
+              <p className="text-slate-400 font-medium leading-relaxed max-w-sm">
+                Architecting high-performance digital experiences through technical precision and user-centric design. Building the web of tomorrow, today.
+              </p>
+            </motion.div>
+
+            <div className="flex gap-4">
+              {socialLinks.map((social, i) => (
+                <motion.a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  className="w-12 h-12 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-xl text-slate-400 hover:text-white hover:bg-purple-600/20 hover:border-purple-500/50 transition-all no-underline"
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="lg:col-span-3">
+            <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-8">Navigation</h4>
+            <ul className="space-y-4 p-0 list-none">
+              {quickLinks.map((link, i) => (
+                <li key={i}>
+                  <a 
+                    href={link.href} 
+                    className="group flex items-center gap-3 text-slate-400 hover:text-white font-bold no-underline transition-colors"
+                  >
+                    <FaChevronRight className="text-[10px] text-purple-600 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Status & Availability */}
+          <div className="lg:col-span-4">
+            <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-8">Current Status</h4>
+            <div className="p-8 glass-dark rounded-[2.5rem] border border-white/5 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]"></div>
+                <span className="text-xs font-black text-white uppercase tracking-widest">Available for hire</span>
+              </div>
+              <p className="text-slate-400 text-sm font-medium">
+                Seeking ambitious projects where I can apply full-stack expertise and AI integration.
+              </p>
+              <a 
+                href="#contact" 
+                className="inline-block py-3 px-6 bg-white/5 hover:bg-white/10 rounded-xl text-white text-[10px] font-black uppercase tracking-widest transition-all no-underline"
+              >
+                Let's Discuss
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">
+            &copy; {currentYear} Abhishek Yadav. Built with <FaHeart className="text-pink-600 animate-pulse mx-1 inline" /> using React
           </p>
+          <div className="flex gap-8">
+            <a href="#about" className="text-slate-500 hover:text-white text-xs font-bold uppercase tracking-widest no-underline transition-colors">Privacy Policy</a>
+            <a href="#contact" className="text-slate-500 hover:text-white text-xs font-bold uppercase tracking-widest no-underline transition-colors">Security Legal</a>
+          </div>
         </div>
-
-        {/* Center: Social Links */}
-        <div className="flex gap-6 text-2xl text-[#a855f7]">
-          <a href="https://github.com/abhiishek2408" target="_blank" rel="noopener noreferrer" className="hover:text-[#6b21a8] transition-colors no-underline">
-            <FaGithub />
-          </a>
-          <a href="https://linkedin.com/in/abhishek" target="_blank" rel="noopener noreferrer" className="hover:text-[#6b21a8] transition-colors no-underline">
-            <FaLinkedin />
-          </a>
-          <a href="https://twitter.com/abhishek" target="_blank" rel="noopener noreferrer" className="hover:text-[#6b21a8] transition-colors no-underline">
-            <FaTwitter />
-          </a>
-          <a href="mailto:abhishek@example.com" className="hover:text-[#6b21a8] transition-colors no-underline">
-            <FaEnvelope />
-          </a>
-        </div>
-
-        {/* Right: Quick Links */}
-        <div className="flex flex-col gap-2 text-center md:text-right text-gray-300 text-sm md:text-base">
-          <a href="#projects" className="hover:text-[#a855f7] transition-colors no-underline">Projects</a>
-          <a href="#contact" className="hover:text-[#a855f7] transition-colors no-underline">Contact</a>
-          <a href="#about" className="hover:text-[#a855f7] transition-colors no-underline">About Me</a>
-        </div>
-      </div>
-
-      <div className="mt-12 pt-6 text-center text-gray-500 text-sm">
-        &copy; {new Date().getFullYear()} Abhishek Yadav. All rights reserved.
       </div>
     </footer>
   );

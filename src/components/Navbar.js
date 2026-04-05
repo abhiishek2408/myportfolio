@@ -1,40 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-
-
-// Hamburger menu icons as SVGs
-const HAMBURGER_ICON = (
-  <svg
-    className="h-6 w-6"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-  </svg>
-);
-
-const CLOSE_ICON = (
-  <svg
-    className="h-6 w-6"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-  </svg>
-);
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaSun, FaMoon, FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -44,18 +15,17 @@ const Navbar = () => {
     document.documentElement.classList.toggle('dark', shouldUseDark);
   }, []);
 
+  const [scrollProgress, setScrollProgress] = useState(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleTheme = () => {
@@ -71,83 +41,102 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 z-50 w-full transition-colors duration-300 ${isScrolled ? (isDarkMode ? 'bg-[#2d1333] shadow-md' : 'bg-[#f5f5f5] shadow-md') : 'bg-transparent'}`}
+      className={`fixed top-0 left-0 z-[100] w-full transition-all duration-500 ${
+        isScrolled 
+          ? 'py-3 bg-white/70 dark:bg-slate-950/50 backdrop-blur-2xl border-b border-white/20 dark:border-white/5 shadow-2xl' 
+          : 'py-6 bg-transparent'
+      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 100, damping: 15 }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <span className="text-2xl font-bold text-[#a855f7] drop-shadow-md">
-            Abhishek
-          </span>
+      {/* Scroll Progress Bar */}
+      <div className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 z-[101] transition-all duration-75" style={{ width: `${scrollProgress}%` }}></div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 md:hidden">
-            <button
-              onClick={toggleTheme}
-              type="button"
-              className={`${isDarkMode ? 'text-white' : 'text-black'} hover:text-[#a855f7] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#a855f7] dark:focus:ring-0 rounded-md p-2 transition-colors duration-200`}
-              aria-label="Toggle dark mode"
-            >
-              {isDarkMode ? <i className="fas fa-sun" aria-hidden="true"></i> : <i className="fas fa-moon" aria-hidden="true"></i>}
-            </button>
-            <button
-              onClick={toggleMenu}
-              type="button"
-              className={`${isDarkMode ? 'text-white' : 'text-black'} hover:text-[#a855f7] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#a855f7] dark:focus:ring-0 rounded-md p-2 transition-colors duration-200`}
-              aria-controls="mobile-menu"
-              aria-expanded={isMenuOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {/* Hamburger or Close icon */}
-              {isMenuOpen ? CLOSE_ICON : HAMBURGER_ICON}
-            </button>
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        {/* Logo */}
+        <motion.a 
+          href="#home"
+          className="text-xl font-black tracking-tighter no-underline flex items-center gap-2 group"
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="w-7 h-7 bg-gradient-to-tr from-purple-600 to-pink-600 rounded-lg flex items-center justify-center text-white text-[10px] rotate-12 group-hover:rotate-0 transition-transform">
+            A
           </div>
+          <span className="text-slate-900 dark:text-white group-hover:text-purple-500 transition-colors">Abhishek</span>
+        </motion.a>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex flex-1 items-center justify-end">
-            <div className="flex items-center space-x-6">
-              {menuItems.map((item) => (
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-6">
+          <ul className="flex items-center gap-6 m-0 p-0 list-none font-medium text-sm">
+            {menuItems.map((item) => (
+              <li key={item}>
                 <a
-                  key={item}
                   href={`#${item.toLowerCase()}`}
-                  className={`relative font-light no-underline transition-colors duration-200 group ${isDarkMode ? 'text-white' : 'text-black'} hover:text-[#a855f7]`}
+                  className="relative text-slate-600 dark:text-white no-underline hover:text-purple-600 dark:hover:text-pink-500 transition-colors py-2 group"
                 >
                   {item}
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#a855f7] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 group-hover:w-full transition-all duration-300"></span>
                 </a>
-              ))}
-            </div>
-            <button
-              onClick={toggleTheme}
-              type="button"
-              className={`ml-6 ${isDarkMode ? 'text-white' : 'text-black'} hover:text-[#a855f7] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#a855f7] dark:focus:ring-0 rounded-md p-2 transition-colors duration-200`}
-              aria-label="Toggle dark mode"
-            >
-              {isDarkMode ? <i className="fas fa-sun" aria-hidden="true"></i> : <i className="fas fa-moon" aria-hidden="true"></i>}
-            </button>
-          </div>
+              </li>
+            ))}
+          </ul>
+
+          <div className="h-5 w-[1px] bg-slate-200 dark:bg-white/10 mx-2"></div>
+
+          <button
+            onClick={toggleTheme}
+            className="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-white/5 hover:bg-purple-600 hover:text-white dark:hover:bg-purple-600 transition-all duration-300 text-slate-600 dark:text-white"
+            aria-label="Toggle theme"
+          >
+            {isDarkMode ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="flex items-center gap-3 md:hidden">
+          <button
+            onClick={toggleTheme}
+            className="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-white"
+          >
+            {isDarkMode ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}
+          </button>
+          
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900"
+          >
+            {isMenuOpen ? <FaTimes className="text-xs" /> : <FaBars className="text-xs" />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden bg-[#f5f5f5] dark:bg-[#2d1333] p-4 transition-all duration-300 ease-in-out`}>
-        <div className="px-2 pt-2 pb-3 space-y-2">
-          {menuItems.map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className={`block px-3 py-2 rounded-md text-base font-light no-underline hover:bg-white/10 relative group ${isDarkMode ? 'text-white' : 'text-black'} hover:text-[#a855f7] transition-colors duration-200`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item}
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#a855f7] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </a>
-          ))}
-        </div>
-      </div>
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden glass-dark dark:bg-slate-950 overflow-hidden border-b border-white/10"
+          >
+            <div className="px-6 py-6 flex flex-col gap-4">
+              {menuItems.map((item, i) => (
+                <motion.a
+                  key={item}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-lg font-bold text-slate-800 dark:text-white no-underline hover:text-purple-600"
+                >
+                  {item}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
