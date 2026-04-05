@@ -251,7 +251,7 @@ const Home = () => {
           {/* Professional Stats */}
           <motion.div 
             variants={itemVariants}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-slate-200 dark:border-white/5 mt-10"
+            className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 pt-12 border-t border-slate-200 dark:border-white/5 mt-10"
           >
             {[
               { num: "50+", label: "Projects Completed" },
@@ -259,7 +259,7 @@ const Home = () => {
               { num: "5+", label: "Open Source" },
               { num: "100%", label: "Dedication" }
             ].map((stat, i) => (
-              <div key={i} className="space-y-1">
+              <div key={i} className="text-center space-y-1">
                 <h4 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white">{stat.num}</h4>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em]">{stat.label}</p>
               </div>
