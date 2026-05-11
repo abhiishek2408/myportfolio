@@ -179,14 +179,14 @@ const Projects = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <div className="p-8 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[2.5rem] border border-slate-500/40 dark:border-white/30 mt-8">
+          <div className="mt-12">
             <a 
               href="https://github.com/abhiishek2408" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-2.5 glass-dark rounded-2xl border border-white/5 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] hover:bg-white dark:hover:bg-slate-800 transition-all no-underline"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-900 dark:bg-white/10 rounded-2xl border border-white/10 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[11px] hover:bg-purple-600 hover:text-white transition-all no-underline shadow-2xl"
             >
-              <FaGithub size={16} /> View More on GitHub
+              <FaGithub size={18} /> View More on GitHub
             </a>
           </div>
         </motion.div>
