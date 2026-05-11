@@ -204,7 +204,9 @@ const Home = () => {
 
             <Magnetic>
               <a 
-                href="YOUR_CV_LINK_HERE"
+                href="https://drive.google.com/file/d/1Pw205EJbTDjPZVVUpcuQQfN-IQ3hNngF/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-7 py-3 bg-white/5 dark:bg-white/5 text-slate-900 dark:text-white border-none rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 no-underline text-xs flex items-center gap-3 backdrop-blur-md"
               >
                 <div className="w-[2px] h-4 bg-purple-500"></div>
