@@ -4,12 +4,12 @@ import { FaExternalLinkAlt, FaCheckCircle, FaBriefcase, FaGraduationCap } from '
 
 const defaultExperiences = [
   {
-    role: "Full Stack Development Trainee",
-    company: "Coding Ninjas",
-    duration: "Jan 2025 - Present",
-    description: "Intensive training in MERN stack, database design, and scalable architecture. Solved 300+ algorithmic challenges and built production-ready web applications.",
-    link: "#",
-    type: "training"
+    role: "Full Stack Web Development Intern",
+    company: "Edu-versity",
+    duration: "Feb 2026 - April 2026",
+    description: "Participated in the Industrial Internship Program, focusing on Full Stack Web Development. Developed production-ready applications and gained practical exposure to professional software development workflows.",
+    link: "https://edu-versity.in/certificate-verification",
+    type: "experience"
   },
   {
     role: "Data Structures & Algorithms",
@@ -66,14 +66,14 @@ const InternshipTraining = ({
             <div className="absolute left-[20px] lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 dark:bg-white border-4 border-white lg:border-purple-600 z-20 shadow-none ring-2 ring-slate-200 dark:ring-white transition-transform hover:scale-125"></div>
 
             <div className="w-full lg:w-1/2 pl-12 lg:pl-0">
-              <div className="p-8 md:p-10 bg-slate-100 dark:bg-white/5 bglass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
+              <div className="p-8 md:p-10 bg-slate-200 dark:bg-white/5 bglass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/5 blur-3xl rounded-full group-hover:bg-purple-600/10 transition-colors"></div>
                 
                 <div className="flex justify-between items-start mb-6">
                   <div className={`p-4 rounded-2xl ${exp.type === 'experience' ? 'bg-blue-500/10 text-blue-500' : 'bg-purple-500/10 text-purple-500'} text-xl`}>
                     {exp.type === 'experience' ? <FaBriefcase /> : <FaGraduationCap />}
                   </div>
-                  <span className="text-[9px] font-black text-slate-400 bg-slate-100 dark:bg-white/5 px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10 uppercase tracking-widest">
+                  <span className="text-[9px] font-black text-slate-500 dark:text-slate-400 bg-slate-200 dark:bg-white/5 px-3 py-1.5 rounded-full border border-slate-300 dark:border-white/10 uppercase tracking-widest">
                     {exp.duration}
                   </span>
                 </div>
@@ -89,7 +89,7 @@ const InternshipTraining = ({
                   {exp.description}
                 </p>
 
-                <div className="flex justify-between items-center pt-6 border-t border-slate-100 dark:border-white/5">
+                <div className="flex justify-between items-center pt-6 transition-all duration-300">
                   <a 
                     href={exp.link} 
                     target="_blank" 

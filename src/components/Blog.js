@@ -81,7 +81,7 @@ const Blog = () => {
             <motion.div 
               key={i} 
               variants={cardVariants}
-              className="p-8 md:p-10 bg-slate-100 dark:bg-white/5 glass-dark rounded-[2.5rem] border border-slate-400 dark:border-white/30 hover:border-purple-500/30 transition-all duration-500 group relative overflow-hidden shadow-none"
+              className="p-8 md:p-10 bg-slate-200 dark:bg-white/5 glass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none"
             >
               {/* Image Header */}
               <div className="relative h-64 overflow-hidden rounded-2xl mb-8">
@@ -114,7 +114,7 @@ const Blog = () => {
                   {blog.description}
                 </p>
 
-                <div className="mt-auto pt-6 border-t border-slate-200 dark:border-white/5">
+                <div className="mt-auto pt-6 transition-all duration-300">
                   <a 
                     href={blog.link} 
                     className="inline-flex items-center gap-3 text-slate-900 dark:text-white font-black text-[9px] uppercase tracking-[0.2em] group-hover:translate-x-2 transition-transform no-underline"
@@ -123,24 +123,10 @@ const Blog = () => {
                   </a>
                 </div>
               </div>
-
-              {/* Progress bar decoration */}
-              <div className={`absolute bottom-0 left-0 h-1 w-0 group-hover:w-full bg-gradient-to-r ${blog.color} transition-all duration-700`}></div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Explore More */}
-        <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <button className="px-8 py-3.5 rounded-full border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-slate-900 transition-all">
-            Access Full Library
-          </button>
-        </motion.div>
       </div>
     </section>
   );

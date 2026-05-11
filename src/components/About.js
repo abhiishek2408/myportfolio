@@ -3,7 +3,7 @@ import { GiCricketBat } from "react-icons/gi";
 import { FaRocket, FaUserTie } from "react-icons/fa";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
-import { SiReact, SiNodedotjs, SiExpress, SiHtml5, SiCss3, SiLaravel, SiPhp, SiJavascript, SiDjango, SiGit, SiDocker, SiPostman, SiC, SiCplusplus, SiAngular as SiSiangulardotjs } from 'react-icons/si';
+import { SiReact, SiNodedotjs, SiExpress, SiHtml5, SiCss3, SiLaravel, SiPhp, SiJavascript, SiDjango, SiGit, SiDocker, SiPostman, SiC, SiCplusplus, SiAngular as SiSiangulardotjs, SiFigma, SiMysql, SiPostgresql, SiMongodb } from 'react-icons/si';
 import InternshipTraining from "./InternshipTraining";
 
 const programmingLanguages = [
@@ -62,14 +62,14 @@ const About = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 pt-4">
-              <div className="p-6 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-3xl flex-1 min-w-[200px] border border-slate-400 dark:border-white/30">
+              <div className="p-6 bg-slate-200 dark:bg-slate-900/60 glass-dark rounded-3xl flex-1 min-w-[200px] border-none">
                 <div className="w-12 h-12 bg-purple-600/10 rounded-2xl flex items-center justify-center mb-4">
                   <GiCricketBat className="text-2xl text-purple-600" />
                 </div>
                 <h4 className="text-slate-900 dark:text-white font-bold mb-1">Passions</h4>
                 <p className="text-sm text-slate-500">Cricket, Strategic Puzzles, Tech Discovery</p>
               </div>
-              <div className="p-6 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-3xl flex-1 min-w-[200px] border border-slate-400 dark:border-white/30">
+              <div className="p-6 bg-slate-200 dark:bg-slate-900/60 glass-dark rounded-3xl flex-1 min-w-[200px] border-none">
                 <div className="w-12 h-12 bg-pink-600/10 rounded-2xl flex items-center justify-center mb-4">
                   <FaRocket className="text-2xl text-pink-600" />
                 </div>
@@ -79,7 +79,7 @@ const About = () => {
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="p-8 md:p-10 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[3rem] border-none relative overflow-hidden">
+          <motion.div variants={itemVariants} className="p-8 md:p-10 bg-slate-200 dark:bg-slate-900/60 glass-dark rounded-[3rem] border-none relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-pink-600/10 rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <h3 className="text-center font-black text-xs uppercase tracking-[0.3em] text-slate-400 mb-8">Architectural Mastery</h3>
             <div className="h-[350px] w-full">
@@ -154,17 +154,32 @@ const About = () => {
                 ], 
                 color: "from-orange-600 to-red-600" 
               },
+              { 
+                title: "Design & Visuals", 
+                skills: [
+                  {name: "UI/UX Design", icon: <SiFigma className="text-[#F24E1E]" />},
+                  {name: "Figma", icon: <SiFigma className="text-[#A259FF]" />},
+                ], 
+                color: "from-purple-600 to-pink-600" 
+              },
+              { 
+                title: "Data Persistence", 
+                skills: [
+                  {name: "PostgreSQL", icon: <SiPostgresql className="text-[#336791]" />},
+                  {name: "MySQL / SQL", icon: <SiMysql className="text-[#4479A1]" />},
+                  {name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" />},
+                ], 
+                color: "from-blue-700 to-cyan-500" 
+              },
             ].map((cat, i) => (
               <motion.div 
                 key={i} 
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="group relative h-full p-10 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[3rem] border-none transition-all duration-500 shadow-none overflow-hidden"
+                className="group relative h-full p-10 bg-slate-200 dark:bg-slate-900/60 glass-dark rounded-[3rem] border-none transition-all duration-500 shadow-none overflow-hidden"
               >
-                <div className={`absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r ${cat.color} opacity-30`}></div>
-                <div className={`absolute -top-12 -right-12 w-24 h-24 bg-gradient-to-br ${cat.color} blur-3xl opacity-0 group-hover:opacity-20 transition-opacity`}></div>
                 
-                <h4 className="text-slate-900 dark:text-white font-black text-[11px] uppercase tracking-[0.3em] mb-10 pb-2 border-b border-slate-200 dark:border-white/5">{cat.title}</h4>
+                <h4 className="text-slate-900 dark:text-white font-black text-[11px] uppercase tracking-[0.3em] mb-10 pb-2 transition-all duration-300">{cat.title}</h4>
                 
                 <div className="space-y-6">
                   {cat.skills.map((skill, si) => (
@@ -219,7 +234,7 @@ const About = () => {
                 <div className="absolute left-[20px] lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 dark:bg-white border-4 border-white lg:border-purple-600 z-20 shadow-none ring-2 ring-slate-200 dark:ring-white transition-transform hover:scale-125"></div>
 
                 <div className="w-full lg:w-1/2 pl-12 lg:pl-0">
-                  <div className="p-8 md:p-10 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
+                  <div className="p-8 md:p-10 bg-slate-200 dark:bg-slate-900/60 glass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-slate-900/5 dark:bg-white/5 blur-3xl rounded-full"></div>
                     
                     <div className="flex justify-between items-start mb-6">

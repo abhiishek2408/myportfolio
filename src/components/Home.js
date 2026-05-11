@@ -141,14 +141,12 @@ const Home = () => {
           }}
         >
           {/* Rotating frame */}
-          <div className="absolute inset-0 border-2 border-dashed border-purple-500/30 rounded-full animate-[spin_25s_linear_infinite]"></div>
-          
           <div className="relative w-full h-full p-4">
-             <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-pink-600 rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] animate-[morph_15s_ease-in-out_infinite] blur-md opacity-25"></div>
+             <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-pink-600 rounded-[42%_58%_70%_30%_/_45%_45%_55%_55%] animate-[morph_15s_ease-in-out_infinite] blur-md opacity-25"></div>
              
              <motion.div 
-               className="relative w-full h-full overflow-hidden shadow-2xl border-4 border-white/10"
-               style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
+               className="relative w-full h-full overflow-hidden shadow-2xl border-2 border-dashed border-purple-500/50 animate-[morph_15s_ease-in-out_infinite]"
+               style={{ borderRadius: "42% 58% 70% 30% / 45% 45% 55% 55%" }}
                whileHover={{ scale: 1.05 }}
                transition={{ duration: 0.5 }}
              >
@@ -207,7 +205,7 @@ const Home = () => {
             <Magnetic>
               <a 
                 href="YOUR_CV_LINK_HERE"
-                className="px-7 py-3 bg-white/5 dark:bg-white/5 text-slate-900 dark:text-white border border-slate-300 dark:border-white/10 rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 no-underline text-xs flex items-center gap-3 backdrop-blur-md"
+                className="px-7 py-3 bg-white/5 dark:bg-white/5 text-slate-900 dark:text-white border-none rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 no-underline text-xs flex items-center gap-3 backdrop-blur-md"
               >
                 <div className="w-[2px] h-4 bg-purple-500"></div>
                 <span>Download CV</span>
@@ -249,7 +247,7 @@ const Home = () => {
           {/* Professional Stats */}
           <motion.div 
             variants={itemVariants}
-            className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 pt-12 border-t border-slate-200 dark:border-white/5 mt-10"
+            className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 pt-12 mt-10"
           >
             {[
               { num: "50+", label: "Projects Completed" },
@@ -271,9 +269,9 @@ const Home = () => {
         .animate-blink { animation: blink 0.75s step-end infinite; }
 
         @keyframes morph {
-          0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-          33% { border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%; }
-          66% { border-radius: 67% 33% 47% 53% / 37% 20% 80% 63%; }
+          0%, 100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+          33% { border-radius: 70% 30% 58% 42% / 30% 60% 40% 70%; }
+          66% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
         }
 
         .animate-gradient {

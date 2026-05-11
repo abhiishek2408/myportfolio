@@ -71,7 +71,7 @@ const Workflow = () => {
             <motion.div 
               key={i} 
               variants={itemVariants}
-              className="group relative p-10 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[3rem] border border-slate-400 dark:border-white/30 hover:-translate-y-4 transition-all duration-500 shadow-none"
+              className="group relative h-full p-10 bg-slate-200 dark:bg-white/5 glass-dark rounded-[3rem] border-none transition-all duration-500 shadow-none overflow-hidden text-center"
             >
               <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white text-2xl mb-8 shadow-xl transition-transform group-hover:scale-110 group-hover:rotate-6`}>
                 {step.icon}

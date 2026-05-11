@@ -20,7 +20,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative w-full py-20 bg-slate-950 border-t border-white/5 overflow-hidden">
+    <footer className="relative w-full py-20 bg-slate-950 overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom,rgba(124,58,237,0.05)_0,transparent_70%)]"></div>
       
@@ -51,7 +51,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ y: -5, scale: 1.1 }}
-                  className="w-12 h-12 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-xl text-slate-400 hover:text-white hover:bg-purple-600/20 hover:border-purple-500/50 transition-all no-underline"
+                  className="w-12 h-12 rounded-2xl bg-white/5 border-none flex items-center justify-center text-xl text-slate-400 hover:text-white hover:bg-purple-600/20 transition-all no-underline"
                 >
                   {social.icon}
                 </motion.a>
@@ -80,7 +80,7 @@ const Footer = () => {
           {/* Status & Availability */}
           <div className="lg:col-span-4">
             <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-8">Current Status</h4>
-            <div className="p-8 glass-dark rounded-[2.5rem] border border-white/5 space-y-4">
+            <div className="p-8 glass-dark rounded-[2.5rem] border-none space-y-4">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]"></div>
                 <span className="text-xs font-black text-white uppercase tracking-widest">Available for hire</span>
@@ -99,7 +99,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="mt-20 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">
             &copy; {currentYear} Abhishek Yadav. Built with <FaHeart className="text-pink-600 animate-pulse mx-1 inline" /> using React
           </p>

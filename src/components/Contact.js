@@ -61,7 +61,7 @@ const Contact = () => {
               <motion.div 
                 key={i}
                 variants={cardVariants}
-                className="group p-4 px-5 bg-slate-100 dark:bg-slate-900/60 rounded-2xl border-none flex items-center gap-4 transition-all duration-300 hover:bg-purple-500/5"
+                className="group p-4 px-5 bg-slate-200 dark:bg-slate-900/60 rounded-2xl border-none flex items-center gap-4 transition-all duration-300 hover:bg-purple-500/5"
               >
                 <div className={`w-16 h-16 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center text-2xl transition-transform group-hover:rotate-12`}>
                   {item.icon}
@@ -96,7 +96,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="p-6 md:p-8 bg-slate-100 dark:bg-slate-900/60 bglass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
+            <div className="p-6 md:p-8 bg-slate-200 dark:bg-slate-900/60 bglass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
               <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/10 blur-3xl rounded-full"></div>
               
               <AnimatePresence>
@@ -129,7 +129,7 @@ const Contact = () => {
                       <input
                         type="text"
                         placeholder="Name"
-                        className="w-full bg-slate-100 dark:bg-slate-900/60 border border-slate-300 dark:border-white/10 rounded-xl py-2.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all text-sm"
+                        className="w-full bg-slate-200 dark:bg-slate-900/60 border border-slate-300 dark:border-white/10 rounded-xl py-2.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all text-sm"
                         required
                         onFocus={() => setIsFocused('name')}
                         onBlur={() => setIsFocused('')}
@@ -146,7 +146,7 @@ const Contact = () => {
                       <input
                         type="email"
                         placeholder="Email"
-                        className="w-full bg-slate-100 dark:bg-slate-900/60 border border-slate-300 dark:border-white/10 rounded-xl py-2.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all text-sm"
+                        className="w-full bg-slate-200 dark:bg-slate-900/60 border border-slate-300 dark:border-white/10 rounded-xl py-2.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all text-sm"
                         required
                         onFocus={() => setIsFocused('email')}
                         onBlur={() => setIsFocused('')}
@@ -164,7 +164,7 @@ const Contact = () => {
                     <textarea
                       rows="4"
                       placeholder="Your message..."
-                      className="w-full bg-slate-100 dark:bg-slate-900/60 border border-slate-300 dark:border-white/10 rounded-2xl py-3.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all resize-none text-sm"
+                      className="w-full bg-slate-200 dark:bg-slate-900/60 border border-slate-300 dark:border-white/10 rounded-2xl py-3.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all resize-none text-sm"
                       required
                       onFocus={() => setIsFocused('message')}
                       onBlur={() => setIsFocused('')}
