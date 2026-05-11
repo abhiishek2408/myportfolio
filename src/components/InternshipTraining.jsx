@@ -8,7 +8,7 @@ const defaultExperiences = [
     company: "Edu-versity",
     duration: "Feb 2026 - April 2026",
     description: "Participated in the Industrial Internship Program, focusing on Full Stack Web Development. Developed production-ready applications and gained practical exposure to professional software development workflows.",
-    link: "https://edu-versity.in/certificate-verification",
+    link: "https://drive.google.com/file/d/1eTviaknjwV3XdiU5vJ6M4h5nzi5v9rKy/view?usp=sharing",
     type: "experience"
   },
   {
@@ -16,7 +16,7 @@ const defaultExperiences = [
     company: "GeeksforGeeks",
     duration: "3 Months (2024)",
     description: "Mastered core computer science concepts including advanced trees, graphs, and dynamic programming. Achieved top ranks in competitive coding contests.",
-    link: "https://auth.geeksforgeeks.org/user/your_username",
+    link: "https://drive.google.com/file/d/15_I81DvEqp-VEo-oxMtaQUIHPfNlHNVk/view?usp=sharing",
     type: "training"
   },
   {

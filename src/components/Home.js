@@ -43,7 +43,7 @@ const Home = () => {
     contact: [
       { name: "Phone", icon: <SvgPhone />, link: "tel:+919305963544" },
       { name: "Email", icon: <SvgEnvelope />, link: "mailto:abhishekydv2408@gmail.com" },
-      { name: "LinkedIn", icon: <SvgLinkedin />, link: "https://www.linkedin.com/in/abhishek-yadav2408/" },
+      { name: "LinkedIn", icon: <SvgLinkedin />, link: "https://www.linkedin.com/in/abhishek-yadav-829212257/" },
       { name: "GitHub", icon: <SvgGithub />, link: "https://github.com/abhiishek2408" }
     ]
   };
