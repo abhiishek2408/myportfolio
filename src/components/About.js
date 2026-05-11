@@ -51,7 +51,7 @@ const About = () => {
           viewport={{ once: true }}
         >
           <motion.div variants={itemVariants} className="space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 font-bold text-xs uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 font-bold text-xs uppercase tracking-widest">
               <FaUserTie /> Professional Profile
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight">
@@ -79,7 +79,7 @@ const About = () => {
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="p-8 md:p-10 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[3rem] border border-slate-400 dark:border-white/30 relative overflow-hidden">
+          <motion.div variants={itemVariants} className="p-8 md:p-10 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[3rem] border border-slate-500/40 dark:border-white/30 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-pink-600/10 rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <h3 className="text-center font-black text-xs uppercase tracking-[0.3em] text-slate-400 mb-8">Architectural Mastery</h3>
             <div className="h-[350px] w-full">
@@ -159,7 +159,7 @@ const About = () => {
                 key={i} 
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="group relative h-full p-10 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[3rem] border border-slate-400 dark:border-white/30 transition-all duration-500 shadow-none overflow-hidden"
+                className="group relative h-full p-10 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[3rem] border border-slate-500/40 dark:border-white/30 transition-all duration-500 shadow-none overflow-hidden"
               >
                 <div className={`absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r ${cat.color} opacity-30`}></div>
                 <div className={`absolute -top-12 -right-12 w-24 h-24 bg-gradient-to-br ${cat.color} blur-3xl opacity-0 group-hover:opacity-20 transition-opacity`}></div>
@@ -192,7 +192,7 @@ const About = () => {
           viewport={{ once: true }}
         >
           <div className="text-center mb-12 space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200 dark:bg-white/5 text-slate-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-200 dark:bg-white/5 text-slate-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">
               <FaRocket /> Scholastic Path
             </div>
             <h3 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
@@ -219,11 +219,11 @@ const About = () => {
                 <div className="absolute left-[20px] lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 dark:bg-white border-4 border-white lg:border-purple-600 z-20 shadow-none ring-2 ring-slate-200 dark:ring-white transition-transform hover:scale-125"></div>
 
                 <div className="w-full lg:w-1/2 pl-12 lg:pl-0">
-                  <div className="p-8 md:p-10 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[2.5rem] border border-slate-400 dark:border-white/30 hover:border-purple-500/30 transition-all duration-500 group relative overflow-hidden shadow-none">
+                  <div className="p-8 md:p-10 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[2.5rem] border border-slate-500/40 dark:border-white/30 hover:border-purple-500/30 transition-all duration-500 group relative overflow-hidden shadow-none">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-slate-900/5 dark:bg-white/5 blur-3xl rounded-full"></div>
                     
                     <div className="flex justify-between items-start mb-6">
-                      <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest px-4 py-2 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                      <div className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest px-3 py-1.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
                         {edu.year}
                       </div>
                     </div>

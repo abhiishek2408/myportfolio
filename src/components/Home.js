@@ -197,7 +197,7 @@ const Home = () => {
             <Magnetic>
               <a 
                 href="#projects" 
-                className="group px-10 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-[length:200%_auto] text-white rounded-2xl font-black uppercase tracking-[0.2em] shadow-[0_20px_40px_rgba(124,58,237,0.3)] hover:shadow-purple-500/50 hover:bg-right transition-all duration-700 no-underline text-xs flex items-center gap-3"
+                className="group px-7 py-3 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-[length:200%_auto] text-white rounded-2xl font-black uppercase tracking-[0.2em] shadow-[0_20px_40px_rgba(124,58,237,0.3)] hover:shadow-purple-500/50 hover:bg-right transition-all duration-700 no-underline text-xs flex items-center gap-3"
               >
                 <FaRocket className="group-hover:rotate-12 transition-transform" /> 
                 <span>Explore Works</span>
@@ -207,7 +207,7 @@ const Home = () => {
             <Magnetic>
               <a 
                 href="YOUR_CV_LINK_HERE"
-                className="px-10 py-4 bg-white/5 dark:bg-white/5 text-slate-900 dark:text-white border border-slate-300 dark:border-white/10 rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 no-underline text-xs flex items-center gap-3 backdrop-blur-md"
+                className="px-7 py-3 bg-white/5 dark:bg-white/5 text-slate-900 dark:text-white border border-slate-300 dark:border-white/10 rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-slate-50 dark:hover:bg-white/10 transition-all duration-300 no-underline text-xs flex items-center gap-3 backdrop-blur-md"
               >
                 <div className="w-[2px] h-4 bg-purple-500"></div>
                 <span>Download CV</span>

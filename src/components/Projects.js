@@ -103,7 +103,7 @@ const Projects = () => {
                 e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
                 e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
               }}
-              className="group relative h-[520px] bg-slate-900 rounded-[3.5rem] border border-white/5 overflow-hidden transition-all duration-700 shadow-2xl"
+              className="group relative h-[520px] bg-slate-900 rounded-[3.5rem] border border-white/20 overflow-hidden transition-all duration-700 shadow-2xl"
             >
               {/* Image Background with zoom and luminosity */}
               <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 overflow-hidden">
@@ -135,7 +135,7 @@ const Projects = () => {
                   
                   <div className="flex flex-wrap gap-2.5 pt-2">
                     {project.tech.map((t, ti) => (
-                      <span key={ti} className="text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl bg-white/5 text-slate-300 border border-white/10 group-hover:border-purple-500/30 transition-colors">
+                      <span key={ti} className="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-xl bg-white/5 text-slate-300 border border-white/10 group-hover:border-purple-500/30 transition-colors">
                         {t}
                       </span>
                     ))}
@@ -179,12 +179,12 @@ const Projects = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <div className="p-8 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[2.5rem] border border-slate-400 dark:border-white/30 mt-8">
+          <div className="p-8 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[2.5rem] border border-slate-500/40 dark:border-white/30 mt-8">
             <a 
               href="https://github.com/abhiishek2408" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3.5 glass-dark rounded-2xl border border-white/5 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] hover:bg-white dark:hover:bg-slate-800 transition-all no-underline"
+              className="inline-flex items-center gap-2 px-6 py-2.5 glass-dark rounded-2xl border border-white/5 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[10px] hover:bg-white dark:hover:bg-slate-800 transition-all no-underline"
             >
               <FaGithub size={16} /> View More on GitHub
             </a>

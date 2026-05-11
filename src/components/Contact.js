@@ -61,7 +61,7 @@ const Contact = () => {
               <motion.div 
                 key={i}
                 variants={cardVariants}
-                className="group p-4 px-5 bg-slate-100 dark:bg-slate-900/60 rounded-2xl border border-slate-400 dark:border-white/30 flex items-center gap-4 transition-all duration-300 hover:border-purple-500/50"
+                className="group p-4 px-5 bg-slate-100 dark:bg-slate-900/60 rounded-2xl border border-slate-500/40 dark:border-white/30 flex items-center gap-4 transition-all duration-300 hover:border-purple-500/50"
               >
                 <div className={`w-16 h-16 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center text-2xl transition-transform group-hover:rotate-12`}>
                   {item.icon}
@@ -96,7 +96,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="p-6 md:p-8 bg-slate-100 dark:bg-slate-900/60 bglass-dark rounded-[2.5rem] border border-slate-400 dark:border-white/30 hover:border-purple-500/30 transition-all duration-500 group relative overflow-hidden shadow-none">
+            <div className="p-6 md:p-8 bg-slate-100 dark:bg-slate-900/60 bglass-dark rounded-[2.5rem] border border-slate-500/40 dark:border-white/30 hover:border-purple-500/30 transition-all duration-500 group relative overflow-hidden shadow-none">
               <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/10 blur-3xl rounded-full"></div>
               
               <AnimatePresence>
@@ -178,7 +178,7 @@ const Contact = () => {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-black uppercase tracking-widest rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-3 text-[10px]"
+                  className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-black uppercase tracking-widest rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-3 text-[10px]"
                 >
                   <FaPaperPlane /> Initiate Protocol
                 </motion.button>
