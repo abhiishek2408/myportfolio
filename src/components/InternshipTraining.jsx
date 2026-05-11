@@ -66,7 +66,7 @@ const InternshipTraining = ({
             <div className="absolute left-[20px] lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 dark:bg-white border-4 border-white lg:border-purple-600 z-20 shadow-none ring-2 ring-slate-200 dark:ring-white transition-transform hover:scale-125"></div>
 
             <div className="w-full lg:w-1/2 pl-12 lg:pl-0">
-              <div className="p-8 md:p-10 bg-slate-100 dark:bg-white/5 bglass-dark rounded-[2.5rem] border border-white/10 dark:border-white/[0.08] hover:border-purple-500/30 transition-all duration-500 group relative overflow-hidden shadow-none">
+              <div className="p-8 md:p-10 bg-slate-100 dark:bg-white/5 bglass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/5 blur-3xl rounded-full group-hover:bg-purple-600/10 transition-colors"></div>
                 
                 <div className="flex justify-between items-start mb-6">
