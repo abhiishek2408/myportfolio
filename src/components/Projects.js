@@ -103,7 +103,7 @@ const Projects = () => {
                 e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
                 e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
               }}
-              className="group relative h-[520px] bg-slate-900 rounded-[3.5rem] border border-white/20 overflow-hidden transition-all duration-700 shadow-2xl"
+              className="group relative h-[520px] bg-slate-900 rounded-[3.5rem] border border-white/[0.08] overflow-hidden transition-all duration-700 shadow-2xl"
             >
               {/* Image Background with zoom and luminosity */}
               <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700 overflow-hidden">
@@ -184,7 +184,7 @@ const Projects = () => {
               href="https://github.com/abhiishek2408" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-900 dark:bg-white/10 rounded-2xl border border-white/10 text-slate-900 dark:text-white font-black uppercase tracking-widest text-[11px] hover:bg-purple-600 hover:text-white transition-all no-underline shadow-2xl"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-900 dark:bg-white/10 rounded-2xl border border-white/[0.08] text-slate-900 dark:text-white font-black uppercase tracking-widest text-[11px] hover:bg-purple-600 hover:text-white transition-all no-underline shadow-2xl"
             >
               <FaGithub size={18} /> View More on GitHub
             </a>
