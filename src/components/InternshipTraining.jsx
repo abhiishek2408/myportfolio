@@ -46,10 +46,12 @@ const InternshipTraining = ({
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200 dark:bg-white/5 text-slate-500 font-bold text-xs uppercase tracking-[0.3em] mb-4">
           <FaBriefcase /> Industry Exposure
         </div>
-        <h3 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
-          Professional <span className="text-purple-600">Journey</span>
-        </h3>
-        <div className="w-20 h-1 bg-purple-600 mx-auto rounded-full"></div>
+        <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white leading-tight">
+          Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Journey</span>
+        </h2>
+        <p className="max-w-2xl mx-auto text-slate-500 font-medium pt-4">
+          A timeline of my professional growth, industry contributions, and specialized technical training in software engineering.
+        </p>
       </div>
 
       <div className="relative space-y-12">
@@ -66,7 +68,7 @@ const InternshipTraining = ({
             <div className="absolute left-[20px] lg:left-1/2 lg:-translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 dark:bg-white border-4 border-white lg:border-purple-600 z-20 shadow-none ring-2 ring-slate-200 dark:ring-white transition-transform hover:scale-125"></div>
 
             <div className="w-full lg:w-1/2 pl-12 lg:pl-0">
-              <div className="p-8 md:p-10 bg-slate-200 dark:bg-white/5 bglass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
+              <div className="p-8 md:p-10 bg-slate-200 dark:bg-[#242424] glass-dark rounded-[2.5rem] hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/5 blur-3xl rounded-full group-hover:bg-purple-600/10 transition-colors"></div>
                 
                 <div className="flex justify-between items-start mb-6">

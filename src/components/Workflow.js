@@ -41,7 +41,7 @@ const Workflow = () => {
   };
 
   return (
-    <section className="relative w-full py-24 bg-slate-50 dark:bg-[#020617] overflow-hidden">
+    <section className="relative w-full py-24 bg-slate-50 dark:bg-[#1a1a1a] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
           className="text-center mb-20 space-y-4"
@@ -55,7 +55,7 @@ const Workflow = () => {
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white leading-tight">
             The <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Blueprint</span> of Success
           </h2>
-          <p className="max-w-2xl mx-auto text-slate-500 font-medium">
+          <p className="max-w-2xl mx-auto text-slate-500 font-medium pt-4">
             My systematic approach to problem-solving and software engineering ensures every project is built for scale and success.
           </p>
         </motion.div>
@@ -71,7 +71,7 @@ const Workflow = () => {
             <motion.div 
               key={i} 
               variants={itemVariants}
-              className="group relative h-full p-10 bg-slate-200 dark:bg-white/5 glass-dark rounded-[3rem] border-none transition-all duration-500 shadow-none overflow-hidden text-center"
+              className="group relative h-full p-10 bg-slate-200 dark:bg-[#242424] glass-dark rounded-[3rem]  transition-all duration-500 shadow-none overflow-hidden text-center"
             >
               <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white text-2xl mb-8 shadow-xl transition-transform group-hover:scale-110 group-hover:rotate-6`}>
                 {step.icon}

@@ -106,22 +106,9 @@ const Home = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen flex items-center justify-center p-6 md:p-12 lg:p-24 overflow-hidden mesh-gradient dark:bg-[#020617]">
-      {/* Dynamic Parallax Background Elements */}
-      <motion.div 
-        className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-600/10 blur-[130px] rounded-full"
-        animate={{
-          x: (mousePosition.x - window.innerWidth / 2) * 0.05,
-          y: (mousePosition.y - window.innerHeight / 2) * 0.05,
-        }}
-      />
-      <motion.div 
-        className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-pink-600/10 blur-[130px] rounded-full"
-        animate={{
-          x: (mousePosition.x - window.innerWidth / 2) * -0.05,
-          y: (mousePosition.y - window.innerHeight / 2) * -0.05,
-        }}
-      />
+    <div className="relative w-full min-h-screen flex items-center justify-center p-6 md:p-12 lg:p-24 overflow-hidden dark:bg-black">
+      {/* Subtle Footer-style Radial Gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.03)_0,transparent_70%)]"></div>
 
 
 

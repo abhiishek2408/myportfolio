@@ -47,7 +47,7 @@ const Blog = () => {
   };
 
   return (
-    <section id="blog" className="relative w-full py-10 bg-slate-50 dark:bg-[#020617] transition-colors duration-500">
+    <section id="blog" className="relative w-full py-10 bg-slate-50 dark:bg-[#1a1a1a] transition-colors duration-500">
       {/* Background Decor */}
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-purple-600/5 blur-[120px] rounded-full"></div>
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-600/5 blur-[120px] rounded-full"></div>
@@ -81,7 +81,7 @@ const Blog = () => {
             <motion.div 
               key={i} 
               variants={cardVariants}
-              className="p-8 md:p-10 bg-slate-200 dark:bg-white/5 glass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none"
+              className="p-8 md:p-10 bg-slate-200 dark:bg-[#242424] glass-dark rounded-[2.5rem] hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none"
             >
               {/* Image Header */}
               <div className="relative h-64 overflow-hidden rounded-2xl mb-8">

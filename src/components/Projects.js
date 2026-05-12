@@ -62,7 +62,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="relative w-full py-10 bg-slate-50 dark:bg-[#020617] transition-colors duration-500">
+    <section id="projects" className="relative w-full py-10 bg-slate-50 dark:bg-[#1a1a1a] transition-colors duration-500">
       {/* Background Decor */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.05)_0,transparent_70%)]"></div>
 
@@ -103,7 +103,7 @@ const Projects = () => {
                 e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
                 e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
               }}
-              className="group relative h-[520px] bg-slate-200 dark:bg-slate-900 rounded-[3.5rem] border-none overflow-hidden transition-all duration-700 shadow-2xl"
+              className="group relative h-[520px] bg-slate-200 dark:bg-[#242424] rounded-[3.5rem] overflow-hidden transition-all duration-700 shadow-2xl"
             >
               {/* Image Background with zoom and luminosity */}
               <div className="absolute inset-0 transition-all duration-700 overflow-hidden">
@@ -117,16 +117,15 @@ const Projects = () => {
               {/* Spotlight Effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none bg-[radial-gradient(circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(124,58,237,0.15)_0%,transparent_50%)]"></div>
               
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
 
               {/* Project Status Tag */}
-              <div className="absolute top-10 left-10 py-2.5 px-5 rounded-full bg-slate-200/80 dark:bg-slate-900/80 backdrop-blur-md border-none text-slate-900 dark:text-white font-black uppercase tracking-widest text-[9px] z-10 flex items-center gap-2 shadow-xl">
+              <div className="absolute top-10 left-10 py-2.5 px-5 rounded-full bg-slate-200/80 dark:bg-[#242424]/80 backdrop-blur-md border-none text-slate-900 dark:text-white font-black uppercase tracking-widest text-[9px] z-10 flex items-center gap-2 shadow-xl">
                 <span className={`inline-block w-1.5 h-1.5 rounded-full bg-gradient-to-r ${project.color} mr-2 animate-pulse`}></span>
                 {project.category}
               </div>
 
               {/* Content Overlay */}
-              <div className="absolute inset-0 p-10 flex flex-col justify-end bg-slate-200/90 dark:bg-slate-900/90 backdrop-blur-sm translate-y-[85%] group-hover:translate-y-0 transition-all duration-700 ease-out">
+              <div className="absolute inset-0 p-10 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent translate-y-[82%] group-hover:translate-y-0 transition-all duration-700 ease-out">
                 <div className="space-y-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <h3 className="text-4xl font-black text-slate-900 dark:text-white leading-none">{project.title}</h3>
                   <p className="text-slate-600 dark:text-slate-400 text-base font-medium line-clamp-2 max-w-md">

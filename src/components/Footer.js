@@ -20,7 +20,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative w-full py-20 bg-slate-950 overflow-hidden">
+    <footer className="relative w-full py-20 bg-black border-t border-white/5 overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom,rgba(124,58,237,0.05)_0,transparent_70%)]"></div>
       

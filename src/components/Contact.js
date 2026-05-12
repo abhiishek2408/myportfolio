@@ -26,7 +26,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative w-full py-10 bg-slate-50 dark:bg-[#020617] transition-colors duration-500">
+    <section id="contact" className="relative w-full py-10 bg-slate-50 dark:bg-[#1a1a1a] transition-colors duration-500">
       {/* Background Decor */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-600/5 blur-[120px] rounded-full"></div>
       <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-pink-600/5 blur-[120px] rounded-full"></div>
@@ -61,7 +61,7 @@ const Contact = () => {
               <motion.div 
                 key={i}
                 variants={cardVariants}
-                className="group p-4 px-5 bg-slate-200 dark:bg-slate-900/60 rounded-2xl border-none flex items-center gap-4 transition-all duration-300 hover:bg-purple-500/5"
+                className="group p-4 px-5 bg-slate-200 dark:bg-[#242424] rounded-2xl  flex items-center gap-4 transition-all duration-300 hover:bg-purple-500/5"
               >
                 <div className={`w-16 h-16 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center text-2xl transition-transform group-hover:rotate-12`}>
                   {item.icon}
@@ -73,7 +73,7 @@ const Contact = () => {
               </motion.div>
             ))}
 
-            {/* <div className="p-8 bg-slate-100 dark:bg-slate-900/60 glass-dark rounded-[2.5rem] border border-slate-400 dark:border-white/30 mt-8">
+            {/* <div className="p-8 bg-slate-100 dark:bg-[#242424] glass-dark rounded-[2.5rem] border border-slate-400 dark:border-white/30 mt-8">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Wanna jump on a call?</h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-6">
                 I'm currently available for freelance work and full-time positions. Let's discuss your project and see how I can help.
@@ -96,7 +96,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="p-6 md:p-8 bg-slate-200 dark:bg-slate-900/60 bglass-dark rounded-[2.5rem] border-none hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
+            <div className="p-6 md:p-8 bg-slate-200 dark:bg-[#242424] bglass-dark rounded-[2.5rem]  hover:bg-purple-500/5 transition-all duration-500 group relative overflow-hidden shadow-none">
               <div className="absolute top-0 right-0 w-32 h-32 bg-purple-600/10 blur-3xl rounded-full"></div>
               
               <AnimatePresence>
@@ -129,7 +129,7 @@ const Contact = () => {
                       <input
                         type="text"
                         placeholder="Name"
-                        className="w-full bg-slate-200 dark:bg-slate-900/60 border border-slate-300 dark:border-white/10 rounded-xl py-2.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all text-sm"
+                        className="w-full bg-slate-200 dark:bg-[#242424] border border-slate-300 dark:border-white/10 rounded-xl py-2.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all text-sm"
                         required
                         onFocus={() => setIsFocused('name')}
                         onBlur={() => setIsFocused('')}
@@ -146,7 +146,7 @@ const Contact = () => {
                       <input
                         type="email"
                         placeholder="Email"
-                        className="w-full bg-slate-200 dark:bg-slate-900/60 border border-slate-300 dark:border-white/10 rounded-xl py-2.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all text-sm"
+                        className="w-full bg-slate-200 dark:bg-[#242424] border border-slate-300 dark:border-white/10 rounded-xl py-2.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all text-sm"
                         required
                         onFocus={() => setIsFocused('email')}
                         onBlur={() => setIsFocused('')}
@@ -164,7 +164,7 @@ const Contact = () => {
                     <textarea
                       rows="4"
                       placeholder="Your message..."
-                      className="w-full bg-slate-200 dark:bg-slate-900/60 border border-slate-300 dark:border-white/10 rounded-2xl py-3.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all resize-none text-sm"
+                      className="w-full bg-slate-200 dark:bg-[#242424] border border-slate-300 dark:border-white/10 rounded-2xl py-3.5 pl-12 pr-5 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all resize-none text-sm"
                       required
                       onFocus={() => setIsFocused('message')}
                       onBlur={() => setIsFocused('')}

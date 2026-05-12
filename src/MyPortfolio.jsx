@@ -30,7 +30,7 @@ function MyPortfolio() {
   };
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col bg-slate-50 dark:bg-[#020617] transition-colors duration-300 overflow-hidden md:cursor-none noise-bg">
+    <div className="relative w-full min-h-screen flex flex-col bg-slate-50 dark:dark-top-up-gradient transition-colors duration-300 overflow-hidden md:cursor-none noise-bg">
       <CustomCursor />
       <Navbar />
       <main>
